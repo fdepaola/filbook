@@ -20,7 +20,7 @@ public class User {
 	private boolean isPrivate;
 	private ArrayList<User> friendList;
 	private ArrayList<Group> groupList;
-	private ArrayList<MessageThread> inbox;
+	private Hashtable<String, MessageThread> inbox;
 	private ArrayList<TextPost> notesList;
 	private ArrayList<String> notifications;
 	private Wall wall;
@@ -103,5 +103,11 @@ public class User {
 
 	public Wall getWall(){}
 
-	public ArrayList<MessageThread> getInbox(){}
+	public void printInboxLinks(){
+	//displays inbox page as hyperlinks
+	}
+
+	public MessageThread getMessageThread(String name){
+		
+	}
 }

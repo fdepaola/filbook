@@ -13,7 +13,9 @@ public class MessageThread{
 		messages.add(first);
 	}
 
-	public addMessage(Message newMessage){ //here be some code that updates "mostRecent" as well }
+	public addMessage(Message newMessage){ 
+		//here be some code that updates "mostRecent" as well 
+	}
 
 	public Date getDate(){}
 
@@ -22,5 +24,4 @@ public class MessageThread{
 	public void printMessages(){} 
 
 	public void printLink(){}
-
 } 

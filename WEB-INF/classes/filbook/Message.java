@@ -7,7 +7,10 @@ public class Message{
 	private String messageBody;
 	private Date date;
 
-	public Message(String text){}
+	public Message(String text){
+		//constructor takes body as a paramter
+		//don't forget to manually set author/recipient/date
+	}
 
 	public void setSender(User sender){}
 
