@@ -1,3 +1,4 @@
+package filbook;
 import java.util.ArrayList;
 
 /**
@@ -98,4 +99,8 @@ public class User {
 	public void addNotification(String n) {}
 
 	public void removeNotification(String n) {}
+
+	public Wall getWall(){}
+
+	public ArrayList<MessageThread> getInbox(){}
 }
