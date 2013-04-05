@@ -23,7 +23,7 @@ i
 		creator = c;
 	}
 	/**
-		the best method ever.
+		the worst method ever.
 	*/
 	public String getCreator(){
 		return creator;
