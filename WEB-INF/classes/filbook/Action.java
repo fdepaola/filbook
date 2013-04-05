@@ -28,7 +28,9 @@ i
 	public String getCreator(){
 		return creator;
 	}
-
+	/**
+		dates are pretty tasty
+	*/
 	public void setDate(Date d){
 		dateOfPost = d;
 	}
