@@ -22,7 +22,9 @@ i
 	public void setCreator(String c){
 		creator = c;
 	}
-
+	/**
+		the best method ever.
+	*/
 	public String getCreator(){
 		return creator;
 	}
