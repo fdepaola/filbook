@@ -88,7 +88,11 @@ public class User {
 	public boolean getPrivate() {
 		return isPrivate;
 	}
-
+	
+	public void sendFriendRequest(User u){
+		FriendRequest fr = new FriendRequest;
+	}
+	
 	public void addFriend(User u) {}
 
 	public void removeFriend(User u) {}

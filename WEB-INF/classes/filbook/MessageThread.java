@@ -7,7 +7,8 @@ public class MessageThread{
 	private User correspondent;
 	private ArrayList<Message> messages;
 	private Date mostRecent;
-
+	private boolean newMessages = true;
+	
 	public MessageThread(Message first){
 		messages = new ArrayList<Message>();
 		messages.add(first);
@@ -24,4 +25,12 @@ public class MessageThread{
 	public void printMessages(){} 
 
 	public void printLink(){}
+
+	public void setNewMessages(boolean b){
+		newMessages = b;
+	}
+
+	public boolean getNewMessages(){
+	
+	}
 } 

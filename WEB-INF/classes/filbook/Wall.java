@@ -1,9 +1,8 @@
-package filbook;
-import java.util.ArrayList;
+package filbook; import java.util.ArrayList;
 
 public class Wall{
-
-	private ArrayList<TextPost> wallPosts;
+	private User owner;
+	private ArrayList<Action> wallPosts;
 	
 	public Wall(){
 	
@@ -21,4 +20,7 @@ public class Wall{
 		
 	}
 	
+	public User getOwner(){
+
+	}	
 }
