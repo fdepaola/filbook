@@ -20,6 +20,8 @@ public class Message{
 
 	public User getRecipient(){}
 
+	public void setContents(String s){}
+
 	public String getContents(){}
 
 	public void printMessage(){}

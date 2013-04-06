@@ -19,13 +19,13 @@ public class UserRepository{
 		userTable = new Hashtable<String,User>(30);
 	}
 	
-	public User getUser(String name){
-		User aUser = userTable.get(name);
+	public User getUser(String email){
+		User aUser = userTable.get(email);
     		return aUser;
 	}	
 
-	public User createNewUser(String name, String password){
-		User newUser = new User(name, password);
+	public User createNewUser(String name, String email, String password){
+		User newUser = new User(name, email, password);
 		userTable.put(name, newUser);
 		return newUser;
 	}		

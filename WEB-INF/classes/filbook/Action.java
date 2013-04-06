@@ -9,7 +9,7 @@ import java.util.Date;
 	@author Greg
 	*/
 public abstract class Action{
-i
+
 	private String creator;
 	private Date dateOfPost;
 	

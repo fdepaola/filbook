@@ -1,3 +1,5 @@
+package filbook;
+
 public class FriendRequest{
 
 	private User sender;

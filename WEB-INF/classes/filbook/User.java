@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
-Represents a person who has registered as a user and stores information and activity. The person's friends, groups, wall posts, and messages are managed via methods of this class.
+Represents a person who has registered as a user and stores information and activity. The person's friends, groups, wall posts, and messages are managed via methods of this class. 
 @author frankie
 */
 public class User {

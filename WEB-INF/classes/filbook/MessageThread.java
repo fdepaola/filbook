@@ -14,7 +14,7 @@ public class MessageThread{
 		messages.add(first);
 	}
 
-	public addMessage(Message newMessage){ 
+	public void addMessage(Message m){ 
 		//here be some code that updates "mostRecent" as well 
 	}
 

@@ -16,7 +16,7 @@ public class TextPost extends Action{
  		
 	}
 	
-	public void setText(String g){
+	public void setText(String s){
 		text = t;
 	}
 

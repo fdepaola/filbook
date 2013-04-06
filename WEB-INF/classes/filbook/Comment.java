@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Comment {
 
-	private author;
+	private User author;
 	private Date date;
 	private String text;
 	
