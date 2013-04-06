@@ -15,8 +15,6 @@ public abstract class Action{
 	private String creator;
 	private Date dateOfPost;
 	
-	public Action(){}	
-	
 	/**
 		Sets the Action's creator member variable.
 		@param c the creator of the action

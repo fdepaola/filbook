@@ -14,7 +14,10 @@ public class Comment {
 	private User author;
 	private Date date;
 	private String text;
-	
+	/**
+		Constructs a new Comment.
+		@param t the textbody of the Comment
+	*/	
 	public Comment(String t){
 
 	}	

@@ -16,7 +16,9 @@ public class TextPost extends Action{
 	
 	private String text;
 	private ArrayList<Comment> comments;
-	
+	/**
+		Constructs a new TextPost.
+	*/	
 	public TextPost(){
  		
 	}

@@ -14,7 +14,9 @@ public class MessageThread{
 	private ArrayList<Message> messages;
 	private Date mostRecent;
 	private boolean newMessages = true;
-	
+	/**
+		Constructs a new MessageThread, taking a Message as a parameter for the first message.
+	*/
 	public MessageThread(Message first){
 		messages = new ArrayList<Message>();
 		messages.add(first);
