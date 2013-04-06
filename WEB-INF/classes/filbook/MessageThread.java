@@ -24,7 +24,7 @@ public class MessageThread{
 
 	public void printMessages(){} 
 
-	public void printLink(){}
+	public void printThread(){}
 
 	public void setNewMessages(boolean b){
 		newMessages = b;

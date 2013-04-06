@@ -2,9 +2,11 @@ package filbook;
 import java.util.Date;
 
 /**
-	The abstract superclass of all Actions which monitors the Creator of the
-	Action, as well as the Date of the Action's creation. Subclasses should
-	provide a substitute display() method.  
+	An abstract class representing events that users have participated in.  
+	Subclasses should provide a substitute display() method to print out any 
+	text or display any images based on what should be seen on the screen.
+	Actions will typically be stored in such a way that allows multiple
+	different subclasses to be listed off all at once.  
 
 	@author Greg
 	*/
@@ -16,29 +18,43 @@ public abstract class Action{
 	public Action(){}	
 	
 	/**
-		Set the name of the creator.
-		@param creator the creator of the action
+		Sets the Action's creator member variable.
+		@param c the creator of the action
+		@author Greg
 	*/
 	public void setCreator(String c){
 		creator = c;
 	}
 	/**
-		the worst method ever.
+		Returns the Action's creator's name as a String.
+		@return the name creatior of the action as a String
+		@author Greg
 	*/
 	public String getCreator(){
 		return creator;
 	}
 	/**
-		dates are pretty tasty
+		Sets the Action's date of creation.
+		@param d the date of the action's creation as a Date
+		@author Greg
 	*/
 	public void setDate(Date d){
 		dateOfPost = d;
 	}
-
+	/**
+		Returns the Actin's date of creation as a Date.
+		@return the date of the Action's creation as a Date
+		@author Greg
+	*/
 	public Date getDate(){
 		return dateOfPost;
 	}
+	/**
+		An abstract method which requires any Action subclasses to provide a
+		format in which to be displayed.
+		@author Greg
 	
+	*/
 	abstract void display(){
 
 	}
