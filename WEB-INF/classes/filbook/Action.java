@@ -20,7 +20,6 @@ public abstract class Action{
 	/**
 		Sets the Action's creator member variable.
 		@param c the creator of the action
-		@author Greg
 	*/
 	public void setCreator(String c){
 		creator = c;
@@ -28,7 +27,6 @@ public abstract class Action{
 	/**
 		Returns the Action's creator's name as a String.
 		@return the name creatior of the action as a String
-		@author Greg
 	*/
 	public String getCreator(){
 		return creator;
@@ -36,7 +34,6 @@ public abstract class Action{
 	/**
 		Sets the Action's date of creation.
 		@param d the date of the action's creation as a Date
-		@author Greg
 	*/
 	public void setDate(Date d){
 		dateOfPost = d;
@@ -44,7 +41,6 @@ public abstract class Action{
 	/**
 		Returns the Actin's date of creation as a Date.
 		@return the date of the Action's creation as a Date
-		@author Greg
 	*/
 	public Date getDate(){
 		return dateOfPost;
@@ -52,7 +48,6 @@ public abstract class Action{
 	/**
 		An abstract method which requires any Action subclasses to provide a
 		format in which to be displayed.
-		@author Greg
 	
 	*/
 	abstract void display(){

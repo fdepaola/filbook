@@ -29,7 +29,6 @@ public class Comment {
 	/**
 		Returns the Comment's text as a String.
 		@return the text to be displayed
-		@author Greg
 	*/
 	public String getText(){
 		return text;
@@ -39,7 +38,6 @@ public class Comment {
 		should be noted that this method will most likely be called by
 		an Action subclass which contains a list of Comments to be
 		displayed.
-		@author Greg
 	*/
 	public void display(){
 
