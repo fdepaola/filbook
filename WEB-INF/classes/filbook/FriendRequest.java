@@ -5,8 +5,8 @@ public class FriendRequest{
 	private User sender;
 	private User reciever;
 	
-	public FriendRequest(User sender, User reciever){
-		reciever.addNotification;
+	public void FriendRequest(User sender, User reciever){
+		//reciever.addNotification;
 	}
 
 	public void acceptRequest(){
