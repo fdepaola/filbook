@@ -9,7 +9,7 @@ Represents a person who has registered as a user and stores information and acti
 public class User {
 	private String name;
 	private Date birthday;
-	private char gender;
+	private enum gender{"Male", "Female", "Unspecified"};
 	private String job;
 	private String school;
 	private String relationship;
@@ -26,92 +26,255 @@ public class User {
 	private Wall wall;
 
 	/**
-	Sets the user's name member variable.
+	Sets the User's name member variable.
+	@param n the new name of the User
 	@author frankie
 	*/
 	public void setName(String n) {}
 	
 	/**
-	Returns the user's name.
+	Returns the User's name as a String.
+	@return the name of the User object
 	@author frankie
 	*/
 	public String getName() {
 		return name;
 	}
 	
-	public void setBirthday(Date b) {}
+	/**
+	Sets the User's birthday according to the month, day, and year specified. Ensure that month is an integer less than 13 and date is an integer less than 31. Year should aalso not exceed the current year.
+	@param month the integer between 1 and 12 (inclusive) that specifies the User's birth month
+	@param date the integer between 1 and 31 (inclusive) that specifies the User's birth date
+	@param year the integer that specifies the User's birth year
+	@author frankie
+	*/
+	public void setBirthday(int month, int date, int year) {}
+	
+	/**
+	Returns the User's birthday as a Date object. Any date formatting can then be performed if desired.
+	@return the Date of the User's birth
+	@author frankie
+	*/
 	public Date getBirthday() {
 		return birthday;
 	}
+	/**
+	Sets the User's gender member variable to either "Male", "Female", or "Unspecified".
+	@param g the gender of the User
+	@author frankie
+	*/
+	public void setGender(gender g) {}
 
-	public void setGender(char g) {}
-	public char getGender() {
+	/**
+	Returns the User's gender as a String.	
+	@return the gender of the User
+	@author frankie
+	*/
+	public String getGender() {
 		return gender;
 	}
 
+	/**
+	Sets the User's job member variable.
+	@param j the new job of the User
+	@author frankie
+	 */
 	public void setJob(String j) {}
+	
+	/**
+	Returns the User's job as a String.
+	@return the current job of the User
+	@author frankie
+	*/
 	public String getJob() {
 		return job;
 	}
 
+	/**
+	Sets the User's school member variable.
+	@param s the new school of the User
+	@author frankie
+	*/
 	public void setSchool(String s) {}
+
+	/**
+	Returns the User's school as a String.
+	@return the current school of the User
+	@author frankie
+	*/
 	public String getSchool() {
 		return school;
 	}
 
+	/**
+	Sets the User's current relationship status. This may be limited to a relatively small set of options such as "Single," "Married," etc.
+	@param r the new relationship status of the User
+	@author frankie
+	*/
 	public void setRelationship(String r) {}
+
+	/**
+	Returns the User's relationship status member variable as a String.
+	@return the current relationship status of the User
+	@author frankie
+	*/
 	public String getRelationship() {
 		return relationship;
 	}
 
+	/**
+	Sets the User's current relationship partner.
+	@param p the new relationship partner of the User
+	@author frankie
+	*/
 	public void setPartner(String p) {}
+	
+	/**
+	Returns the User's relationship partner's name as a String.
+	@return the current relationship partner of the User
+	@author frankie
+	*/
 	public String getPartner() {
 		return partner;
 	}
 
+	/**
+	Sets the User's current phone number.
+	@param p the new phone number of the User
+	@author frankie
+	*/
 	public void setPhone(String p) {}
+	
+	/**
+	Returns the User's phone number as a String.
+	@return the current phone number of the User
+	@author frankie
+	*/
 	public String getPhone() {
 		return phone;
 	}
 
-	private void setEmail() {}
+	/**
+	Sets the User's e-mail address. This private method will usually only be called by the User's constructor and will not be changed once set.
+	@param e the e-mail address of the User
+	@author frankie
+	*/
+	private void setEmail(String email) {}
+	
+	/**
+	Returns the User's e-mail address as a String.
+	@return the e-mail address of the User
+	@author frankie
+	*/
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	Sets the User's password.
+	@param p the new password of the User
+	@author frankie
+	*/
 	public void setPassword(String p) {}
+
+	/**
+	Returns the User's password as a String.
+	@return the current password of the User
+	@author frankie
+	*/
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	Toggles the privacy setting of the User's profile page. If set to true, the profile will be set to "Private" and only visible by current members of the User's friends list. If false, the profile will be "Public" and visible to any user.
+	@param p the boolean value corresponding to whether the User's profile is private
+	@author frankie
+	*/
 	public void setPrivate(boolean p) {}
+
+	/**
+	Returns the User's current privacy setting as a boolean. Returns true if the profile is set to private, otherwise returns false.
+	@return true if User's profile is "private," else false
+	@author frankie
+	*/
 	public boolean getPrivate() {
 		return isPrivate;
 	}
 	
+	/**
+	Instantiates a new FriendRequest object with the parameter User being the sender of the request and the User on whom this method is called being the receiver. If the two users are already friends, this will do nothing.
+	@param u the User who is sending the new Friend Request
+	@author frankie
+	*/
 	public void sendFriendRequest(User u){
 		FriendRequest fr = new FriendRequest;
 	}
 	
+	/**
+	Adds another User to the friends list of the User on whom this method is called. This has no effect if the two Users are already friends.
+	@param u the User to be added as a friend
+	@author frankie
+	*/
 	public void addFriend(User u) {}
 
+	/**
+	Removes a User from the friends list of the User on whom this method is called. This has no effect if the two Users are not currently friends.
+	@param u the User to be removed
+	@author frankie
+	*/
 	public void removeFriend(User u) {}
 
+	/**
+	Adds the User to the specified Group's member list and adds this Group to the User's groups list. If the User is already a member of the Group this does nothing.
+	@param g the Group that the User is joining
+	@author frankie
+	*/
 	public void joinGroup(Group g) {}
 
+	/**
+	Removes the User from the specified Group's member list and removes the Group from the User's groups list. If the User is not a current member of the Group this does nothing.
+	@param g the Group that the User is leaving
+	@author frankie
+	*/
 	public void leaveGroup(Group g) {}
 
+	/**
+	Adds a new String to the User's notifications list that describes a new activity such as a relevant Wall Post or Comment. The String will indicate what User performed the activity and what specific activity that User performed. For example: "Greg posted on your Wall."
+	@param n the String that summarizes the new activity
+	@author frankie
+	*/
 	public void addNotification(String n) {}
 
-	public void removeNotification(String n) {}
+	/**
+	Removes a String from the User's notification list according to its index within the ArrayList.
+	@param index the index of the String to be removed from the notifications list
+	@author frankie
+	*/
+	public void removeNotification(int index) {}
 
+	/**
+	Returns the User's Wall as a Wall object.
+	@return the Wall object belonging to the User
+	@author frankie
+	*/
 	public Wall getWall(){}
 
-	public void printInboxLinks(){
-	//displays inbox page as hyperlinks
+	/**
+	Prints a summary of each MessageThread in the User's inbox. MessageThreads will be ordered by the Date of their most recent Message and any MessageThread with new, unread Messages will be listed first. The other User (correspondent) of each MessageThread is listed along with the Date and a notifier of whether any Messages within are unread.
+	@author frankie
+	*/
+	public void printInbox(){
+	//displays inbox page with buttons
 	}
 
-	public MessageThread getMessageThread(String name){
+	/**
+	Returns the MessageThread object from the inbox Hashtable that corresponds to the Key e-mail.
+	@param email the email address of the correspondent
+	@return the MessageThread object that is the value for the e-mail address key 
+	@author frankie
+	*/
+	public MessageThread getMessageThread(String email){
 		
 	}
 }
