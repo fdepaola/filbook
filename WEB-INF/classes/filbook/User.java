@@ -24,6 +24,7 @@ public class User {
 	private ArrayList<TextPost> notesList;
 	private ArrayList<String> notifications;
 	private Wall wall;
+	private String profilePic;
 
 	/**
 	Constructs a new User object with the given parameters as its name, email, and password member variables.
@@ -253,4 +254,17 @@ public class User {
 	public MessageThread getMessageThread(String email){
 		
 	}
+	
+	/**
+	Returns the directory and filename of the User's current profile picture. Returns null if the User has no profile picture set.
+	@returns the User's profilePic instance variable
+	*/
+	public String getPicture(){}
+
+	/**
+	Changes the User's profile picture by assigning a new filename.
+	@param p the directory and filename of the new picture
+	*/
+	public void setPicture(String p){}
+
 }
