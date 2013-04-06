@@ -208,7 +208,7 @@ public class User {
 	@author frankie
 	*/
 	public void sendFriendRequest(User u){
-		FriendRequest fr = new FriendRequest;
+		FriendRequest fr = new FriendRequest();
 	}
 	
 	/**
