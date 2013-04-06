@@ -7,12 +7,22 @@ import java.util.ArrayList;
 		@author Greg
 	*/
 public class Wall{
-	private User owner;
+	private User owner=null;
+	private Group creator=null;
 	private ArrayList<Action> wallPosts;
 	
-	public Wall(){
-	
-	}
+	/**
+		Constructs a new empty Wall for a User.
+		@param u the User who is the new Wall's owner
+	*/
+	public Wall(User u){}
+
+	/**
+		Constructs a new empty Wall for a Group.
+		@param g the Group who is the new Wall's creator
+	*/
+	public Wall(Group g){}
+
 	/**
 		Adds a TextPost to the current Wall's ArrayList of Actions.
 		@param t the TextPost to add to a wall

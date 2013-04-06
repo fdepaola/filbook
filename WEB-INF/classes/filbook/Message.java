@@ -12,6 +12,10 @@ public class Message{
 	private String messageBody;
 	private Date date;
 
+	/**
+		Constructs a new Message using the given String as its messageBody.
+		@param text the String that will be used as the messageBody
+	*/
 	public Message(String text){
 		//constructor takes body as a paramter
 		//don't forget to manually set author/recipient/date
