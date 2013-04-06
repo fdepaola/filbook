@@ -26,6 +26,14 @@ public class User {
 	private Wall wall;
 
 	/**
+	Constructs a new User object with the given parameters as its name, email, and password member variables.
+	@param n the User's name
+	@param e the User's e-mail address
+	@param p the User's password
+	*/
+	public User(String n, String e, String p){}
+
+	/**
 	Sets the User's name member variable.
 	@param n the new name of the User
 	*/
