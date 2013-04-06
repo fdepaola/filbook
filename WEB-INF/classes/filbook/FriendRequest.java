@@ -1,19 +1,35 @@
 package filbook;
-
+	
+	/**
+		A FriendRequest is an invitation for a mutual virtual friendship.
+		Note that a FriendRequest has no effect on the status of the Users'
+		friendship until it is accepted by the recipient.
+		@author Greg
+	*/
 public class FriendRequest{
-
+	
 	private User sender;
-	private User reciever;
-	
-	public void FriendRequest(User sender, User reciever){
-		//reciever.addNotification;
+	private User receiver;
+	/**
+		Constructs a new FriendRequest.
+		@param sender the sender of the FriendRequest
+		@param receiver  the receiver of the FriendRequest
+	*/	
+	public void FriendRequest(User sender, User receiver){
+		//receiver.addNotification;
 	}
-
+	/**
+		Adds the recipient of the FriendRequest to the sender's FriendList
+		as well as adding the sender of the FriendRequest to the 
+		recipient's FriendList.
+	*/
 	public void acceptRequest(){
-		sender.addFriend(reciever);
-		reciever.addFriend(sender);
+		sender.addFriend(receiver);
+		receiver.addFriend(sender);
 	}
-	
+	/**
+		Removes the FriendRequest from the recipient's notifications.
+	*/
 	public void denyRequest(){
 		//this.remove;
 	}
