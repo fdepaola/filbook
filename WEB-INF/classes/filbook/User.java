@@ -9,7 +9,7 @@ Represents a person who has registered as a user and stores information and acti
 public class User {
 	private String name;
 	private Date birthday;
-	private enum gender{"Male", "Female", "Unspecified"};
+	private char gender;
 	private String job;
 	private String school;
 	private String relationship;
@@ -63,14 +63,14 @@ public class User {
 	@param g the gender of the User
 	@author frankie
 	*/
-	public void setGender(gender g) {}
+	public void setGender(char g) {}
 
 	/**
 	Returns the User's gender as a String.	
 	@return the gender of the User
 	@author frankie
 	*/
-	public String getGender() {
+	public char getGender() {
 		return gender;
 	}
 
