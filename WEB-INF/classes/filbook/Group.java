@@ -1,4 +1,5 @@
 package filbook;
+import java.util.ArrayList;
 
 /**
 A collection of User objects who share some common interest.
@@ -30,7 +31,9 @@ public class Group{
 	Returns the Group's name as a String.
 	@return the name of the Group
 	*/
-	public String getName(){}
+	public String getName(){
+		return name;
+	}
 
 	/**
 	Sets the Group's purpose.
@@ -42,13 +45,17 @@ public class Group{
 	Returns the Group's purpose as a String.
 	@return the Group's current purpose
 	*/
-	public String getPurpose(){}
+	public String getPurpose(){
+		return purpose;
+	}
 
 	/**
 	Returns the Group's creator as a User object.
 	@return the Group's creator User
 	*/
-	public User getCreator(){}
+	public User getCreator(){
+		return creator;
+	}
 
 	/**
 	Sets the Group's creator. This method will typically only be called from the constructor.
@@ -72,6 +79,8 @@ public class Group{
 	Returns the Group's Wall object.
 	@return the Wall object instantiated by the Group
 	*/
-	public Wall getWall(){}	
+	public Wall getWall(){
+		return wall;
+	}	
 
 }

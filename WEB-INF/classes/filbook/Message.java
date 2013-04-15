@@ -29,7 +29,9 @@ public class Message{
 		Returns the Message's author as a User.
 		@return the author of the Message
 	*/
-	public User getSender(){}
+	public User getSender(){
+		return author;
+	}
 	/**
 		Sets the Message's recipient member variable.
 		@param recipient the recipient of the message
@@ -39,7 +41,9 @@ public class Message{
 		Returns the Message's recipient as a User.
 		@return the recipient of the Message
 	*/
-	public User getRecipient(){}
+	public User getRecipient(){
+		return recipient;
+	}
 	/**
 		Sets the Message's messageBody member variable.
 		@param s the desired text to be displayed
@@ -49,7 +53,9 @@ public class Message{
 		Returns the Message's messageBody as a String.
 		@return the messageBody of the Message
 	*/
-	public String getContents(){}
+	public String getContents(){
+		return messageBody;
+	}
 	/**
 		Prints out the Message's author, date, and messageBody.  This will
 		typically be called by the MessageThread class.

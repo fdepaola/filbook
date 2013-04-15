@@ -32,7 +32,10 @@ public class MessageThread{
 		MessageThread.
 		@return the date of the most recent Mssage
 	*/
-	public Date getDate(){}
+	public Date getDate(){
+		return mostRecent;
+	}
+
 	/**
 		Removes a Message from the MessageThread's ArrayList of Messages.
 		The Message will be removed based on matching the Comment's index
@@ -65,6 +68,6 @@ public class MessageThread{
 		false indicates that every Message has been observed.
 	*/
 	public boolean getNewMessages(){
-	
+		return false;
 	}
 } 

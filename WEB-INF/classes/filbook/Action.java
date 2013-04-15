@@ -48,8 +48,6 @@ public abstract class Action{
 		format in which to be displayed.
 	
 	*/
-	abstract void display(){
-
-	}
+	abstract void display();
 }
 	

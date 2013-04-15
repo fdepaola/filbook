@@ -7,8 +7,8 @@ import java.util.ArrayList;
 		@author Greg
 	*/
 public class Wall{
-	private User owner=null;
-	private Group creator=null;
+	private User owner;
+	private Group creator;
 	private ArrayList<Action> wallPosts;
 	
 	/**
@@ -49,6 +49,6 @@ public class Wall{
 		Returns the Wall's owner as a User.
 	*/
 	public User getOwner(){
-
+		return owner;
 	}	
 }

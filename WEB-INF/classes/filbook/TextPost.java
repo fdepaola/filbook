@@ -26,7 +26,7 @@ public class TextPost extends Action{
 		Sets the TextPost's text member variable.
 		@param s the text destined to be displayed
 	*/
-	public void setText(String s){
+	public void setText(String t){
 		text = t;
 	}
 	/**
