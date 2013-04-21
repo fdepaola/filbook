@@ -97,6 +97,10 @@ public class User {
 		return birthday;
 	}
 
+	public boolean isFriends(User u) {
+		return friendList.contains(u);
+	}
+
 	/**
 	Sets the User's gender member variable to either "Male", "Female", or "Unspecified".
 	@param g the gender of the User
@@ -249,7 +253,7 @@ public class User {
 	@param u the User who is sending the new Friend Request
 	*/
 	public void sendFriendRequest(User u){
-		FriendRequest fr = new FriendRequest();
+		FriendRequest fr = new FriendRequest(this, u);
 	}
 	
 	/**
