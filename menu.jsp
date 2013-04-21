@@ -18,6 +18,8 @@ Search for other Filberts or Filbert-groups!</br>
 <a href="modProfile.jsp">Modify Profile</a> |
 <a href="modAccount.jsp">Account Settings</a>
 	<%
+	} else {
+		response.sendRedirect("register.jsp");
 	}
 %>
 </table>

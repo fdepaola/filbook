@@ -15,8 +15,10 @@ public class FriendRequest{
 		@param sender the sender of the FriendRequest
 		@param receiver  the receiver of the FriendRequest
 	*/	
-	public void FriendRequest(User sender, User receiver){
-		//receiver.addNotification;
+	FriendRequest(User s, User r){
+		sender = s;
+		receiver = r;
+		receiver.addNotification("New friend request from " + sender.getName());
 	}
 	/**
 		Adds the recipient of the FriendRequest to the sender's FriendList
@@ -34,6 +36,9 @@ public class FriendRequest{
 		//this.remove;
 	}
 
+	public User getSender(){
+		return sender;
+	}
 	
 }
 	

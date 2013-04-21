@@ -7,3 +7,4 @@ if (requester == null || requestee == null)
 	response.sendRedirect("home.jsp");
 requester.sendFriendRequest(requestee);
 response.sendRedirect("home.jsp");
+%>
