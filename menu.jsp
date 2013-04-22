@@ -13,13 +13,16 @@ Search for other Filberts or Filbert-groups!</br>
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	if (currentUser != null){
 	%>
+<form>
 <a href="inbox.jsp">Inbox</a> | 
 <a href="profile.jsp">My Profile</a> | 
 <a href="modProfile.jsp">Modify Profile</a> |
 <a href="modAccount.jsp">Modify Account Settings</a>
+<a href="logoutController.jsp">Logout</a>
 	<%
 	}
 %>
+</form>
 </table>
 
 

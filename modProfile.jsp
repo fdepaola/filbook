@@ -3,3 +3,4 @@
 <form>
 the page for modifying your profile goes here
 </form>	
+</body>
