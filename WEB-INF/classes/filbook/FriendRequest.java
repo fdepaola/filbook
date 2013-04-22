@@ -18,7 +18,6 @@ public class FriendRequest{
 	FriendRequest(User s, User r){
 		sender = s;
 		receiver = r;
-		receiver.addNotification("New friend request from " + sender.getName());
 	}
 	/**
 		Adds the recipient of the FriendRequest to the sender's FriendList

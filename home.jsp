@@ -29,7 +29,7 @@ for (String s : currentUser.getNotifications()){
 
 for (FriendRequest fr : currentUser.getFriendRequests()){
 	User sender = fr.getSender();
-	out.println(sender.getName() + "<form action=\"addFriend.jsp?newFriend=" + sender.getEmail() + "><input type=submit value=\"Accept?\" /></form>" + "<form action=\"denyFriend.jsp?noFriend=" + sender.getEmail() + "><input type=submit value=\"Deny?\" /></form></br>");
+	out.println(sender.getName() + "<form action=\"addFriend.jsp\"><input type=hidden name=\"newFriend\" value=\"" + sender.getEmail() + "\" /><input type=submit value=\"Accept?\" /></form>" + "<form action=\"denyFriend.jsp\" /><input type=hidden name=\"deniedFriend\" value=\"" + sender.getEmail() + "\" /><input type=submit value=\"Deny?\" /></form></br>");
 }
 
 

@@ -320,6 +320,12 @@ public class User {
 		return friendRequests;
 	}
 
+	public void removeFriendRequest(User u) {
+		for (int i = friendRequests.size()-1; i>=0; i--)
+			if (friendRequests.get(i).getSender() == u)
+				friendRequests.remove(i);
+	}
+
 	/**
 	Returns the User's Wall as a Wall object.
 	@return the Wall object belonging to the User
