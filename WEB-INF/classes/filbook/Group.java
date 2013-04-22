@@ -19,13 +19,26 @@ public class Group{
 	@param purpose a statement of the Group's focus
 	@param creator the User who started the Group
 	*/
-	public Group(String name, String purpose, User creator){}
+	public Group(String name, String purpose, User creator){
+		setName(name);
+		setPurpose(purpose);
+		setCreator(creator);
+		init();
+	}
+
+	private void init(){
+		members = new ArrayList<User>();
+		wall = new Wall(this);
+		notesList = new ArrayList<TextPost>();
+	}
 
 	/**
 	Sets the Group's name.
 	@param s the new name of the Group
 	*/
-	public void setName(String s){}
+	public void setName(String n){
+		name = n;
+	}
 
 	/**
 	Returns the Group's name as a String.
@@ -39,7 +52,9 @@ public class Group{
 	Sets the Group's purpose.
 	@param s the Group's new purpose
 	*/
-	public void setPurpose(String s){}	
+	public void setPurpose(String p){
+		purpose = p;
+	}	
 
 	/**
 	Returns the Group's purpose as a String.
@@ -61,19 +76,25 @@ public class Group{
 	Sets the Group's creator. This method will typically only be called from the constructor.
 	@param u the User who started the Group
 	*/
-	private void setCreator(User u){}
+	private void setCreator(User u){
+		creator = u;
+	}
 
 	/**
 	Adds a new User to the Group's member list and adds the Group to that User's groups list. Does nothing if the User is already a member of the Group.
 	@param u the User who is joining the Group
 	*/
-	public void addMember(User u){}
+	public void addMember(User u){
+		members.add(u);
+	}
 
 	/**
 	Removes a User from the Group's member list and removes the Group from that User's groups list. Does nothing if that User is not currently a member of the Group.
 	@param u the User who is leaving the Group
 	*/
-	public void removeMember(User u){}
+	public void removeMember(User u){
+		members.remove(u);
+	}
 
 	/**
 	Returns the Group's Wall object.

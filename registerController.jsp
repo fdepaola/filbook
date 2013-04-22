@@ -13,7 +13,7 @@
 		if (UserRepository.instance().getUser(email) != null){
 			%>
 			E-Mail Address already in use. Try logging in.
-			<form action="login.jsp"><input type=submit value="Ok!"></form>
+			<form action="register.jsp"><input type=submit value="Ok!"></form>
 			<%
 			add = false;
 		}

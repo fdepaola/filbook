@@ -22,6 +22,7 @@ public class User {
 	private Hashtable<String, MessageThread> inbox;
 	private ArrayList<TextPost> notesList;
 	private ArrayList<String> notifications;
+	private ArrayList<FriendRequest> friendRequests;
 	private Wall wall;
 	private String profilePic;
 
@@ -59,6 +60,7 @@ public class User {
 		inbox = new Hashtable<String, MessageThread>(100);
 		notesList = new ArrayList<TextPost>();
 		notifications = new ArrayList<String>();
+		friendRequests = new ArrayList<FriendRequest>();
 		wall = new Wall(this);
 		setPicture("/profilePics/filbert.jpg");
 	}	
@@ -95,6 +97,10 @@ public class User {
 	*/
 	public Calendar getBirthday() {
 		return birthday;
+	}
+
+	public boolean isFriends(User u) {
+		return friendList.contains(u);
 	}
 
 	/**
@@ -249,7 +255,8 @@ public class User {
 	@param u the User who is sending the new Friend Request
 	*/
 	public void sendFriendRequest(User u){
-		FriendRequest fr = new FriendRequest();
+		FriendRequest fr = new FriendRequest(this, u);
+		u.friendRequests.add(fr);
 	}
 	
 	/**
@@ -303,6 +310,20 @@ public class User {
 	*/
 	public void removeNotification(int i) {
 		notifications.remove(i);
+	}
+
+	public ArrayList<String> getNotifications() {
+		return notifications;
+	}
+
+	public ArrayList<FriendRequest> getFriendRequests() {
+		return friendRequests;
+	}
+
+	public void removeFriendRequest(User u) {
+		for (int i = friendRequests.size()-1; i>=0; i--)
+			if (friendRequests.get(i).getSender() == u)
+				friendRequests.remove(i);
 	}
 
 	/**
