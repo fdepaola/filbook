@@ -35,4 +35,16 @@ for (FriendRequest fr : currentUser.getFriendRequests()){
 
 }
 %>
+<form method="post" action="">
+<textarea name="newWallPost" cols="70" rows="4">
+Write on this person's wall!
+</textarea><br>
+<input type="submit" value="Submit" />
+</form>
+<%
+if(currentUser!=null){
+out.println("currentUser.getWall().displayWall();");
+}
+%>
+
 </body>

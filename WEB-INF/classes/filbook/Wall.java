@@ -28,7 +28,7 @@ public class Wall{
 		@param t the TextPost to add to a wall
 	*/
 	public void addWallPost(TextPost t){
-
+		wallPosts.add(t);
 	}
 	/**
 		Removes a TextPost from the Wall's Arraylist of Actions based on 
@@ -43,7 +43,9 @@ public class Wall{
 		for calling display() on each of its Comments.
 	*/
 	public void displayWall(){
-		
+		for(int i=0; i<wallPosts.size(); i++){
+			System.out.println(wallPosts.get(i));
+		}
 	}
 	/**
 		Returns the Wall's owner as a User.
