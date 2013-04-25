@@ -16,3 +16,8 @@ Write on this person's wall!
 </textarea><br>
 <input type="submit" value="Submit" />
 </form>
+<%
+	if (currentUser.isFriends(view)) {
+		out.println("<form action =\"removeFriend.jsp\" method=POST><input type=\"hidden\" name=\"removed\" value=\"" + view.getEmail() + "\" /><input type=submit value=\"Kill Friendship\" /></form>");
+	}
+%>

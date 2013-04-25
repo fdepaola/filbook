@@ -53,4 +53,8 @@ public class Wall{
 	public User getOwner(){
 		return owner;
 	}	
+
+	public ArrayList<Action> getPosts(){
+		return wallPosts;
+	}
 }

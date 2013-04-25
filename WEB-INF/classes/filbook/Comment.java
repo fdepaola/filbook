@@ -45,4 +45,13 @@ public class Comment {
 	public void display(){
 
 	}
+	
+	public User getAuthor(){
+		return author;
+	}
+
+	public Date getDate(){
+		return date;
+	}	
 }
+

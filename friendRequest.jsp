@@ -11,7 +11,15 @@ for (FriendRequest fr : requestee.getFriendRequests()){
 		add = false;
 	}
 }
+for (FriendRequest fr : requester.getFriendRequests()){
+	if (fr.getSender() == requestee){
+		add = false;
+		requestee.addFriend(requester);
+		requester.addFriend(requestee);
+	}
+}
 if (add == true)
 	requester.sendFriendRequest(requestee);
 response.sendRedirect("home.jsp");
+
 %>

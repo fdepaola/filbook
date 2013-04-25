@@ -1,5 +1,5 @@
 package filbook;
-import java.util.Date;
+import java.util.*;
 
 /**
 	An abstract class representing events that users have participated in.  
@@ -49,5 +49,7 @@ public abstract class Action{
 	
 	*/
 	abstract void display();
+	
+	abstract ArrayList<Comment> getComments();
 }
 	

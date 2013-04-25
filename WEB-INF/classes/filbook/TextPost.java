@@ -61,4 +61,8 @@ public class TextPost extends Action{
 	public void display(){
 	
 	}
+	
+	public ArrayList<Comment> getComments(){
+		return comments;
+	}
 }

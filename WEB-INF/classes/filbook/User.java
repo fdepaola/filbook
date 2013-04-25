@@ -1,5 +1,6 @@
 package filbook;
 import java.util.*;
+import java.io.*;
 
 /**
 Represents a person who has registered as a user and stores information and activity. The person's friends, groups, wall posts, and messages are managed via methods of this class. 
@@ -44,6 +45,7 @@ public class User {
 		setEmail(e);
 		setPassword(p);
 		init();
+		save();
 	}
 
 	private void init(){
@@ -71,6 +73,7 @@ public class User {
 	*/
 	public void setName(String n) {
 		name = n;
+		save();
 	}
 	
 	/**
@@ -89,6 +92,7 @@ public class User {
 	*/
 	public void setBirthday(int month, int date, int year) {
 		birthday = new GregorianCalendar(year, month, date);
+		save();
 	}
 	
 	/**
@@ -112,6 +116,7 @@ public class User {
 		if (g != 'M' && g != 'F')
 			g = 'U';
 		gender = g;
+		save();
 	}
 
 	/**
@@ -128,6 +133,7 @@ public class User {
 	 */
 	public void setJob(String j) {
 		job = j;
+		save();
 	}
 	
 	/**
@@ -144,6 +150,7 @@ public class User {
 	*/
 	public void setSchool(String s) {
 		school = s;
+		save();
 	}
 
 	/**
@@ -160,6 +167,7 @@ public class User {
 	*/
 	public void setRelationship(String r) {
 		relationship = r;
+		save();
 	}
 
 	/**
@@ -176,6 +184,7 @@ public class User {
 	*/
 	public void setPartner(String p) {
 		partner = p;
+		save();
 	}
 	
 	/**
@@ -192,6 +201,7 @@ public class User {
 	*/
 	public void setPhone(String p) {
 		phone = p;
+		save();
 	}
 	
 	/**
@@ -208,6 +218,7 @@ public class User {
 	*/
 	void setEmail(String e) {
 		email = e;
+		save();
 	}
 	
 	/**
@@ -224,6 +235,7 @@ public class User {
 	*/
 	public void setPassword(String p) {
 		password = p;
+		save();
 	}
 		
 	/**
@@ -240,6 +252,7 @@ public class User {
 	*/
 	public void setPrivate(boolean p) {
 		isPrivate = p;
+		save();
 	}
 
 	/**
@@ -257,6 +270,7 @@ public class User {
 	public void sendFriendRequest(User u){
 		FriendRequest fr = new FriendRequest(this, u);
 		u.friendRequests.add(fr);
+		u.save();
 	}
 	
 	/**
@@ -268,6 +282,8 @@ public class User {
 			friendList.add(u);
 		if(!u.friendList.contains(this))
 			u.friendList.add(this);
+		save();
+		u.save();
 	}
 
 	/**
@@ -277,6 +293,8 @@ public class User {
 	public void removeFriend(User u) {
 		friendList.remove(u);
 		u.friendList.remove(this);
+		save();
+		u.save();
 	}
 
 	/**
@@ -286,6 +304,7 @@ public class User {
 	public void joinGroup(Group g) {
 		if (!groupList.contains(g))
 			groupList.add(g);
+		save();
 	}
 
 	/**
@@ -294,6 +313,7 @@ public class User {
 	*/
 	public void leaveGroup(Group g) {
 		groupList.remove(g);
+		save();
 	}
 
 	/**
@@ -302,6 +322,7 @@ public class User {
 	*/
 	public void addNotification(String n) {
 		notifications.add(n);	
+		save();
 	}	
 
 	/**
@@ -310,6 +331,7 @@ public class User {
 	*/
 	public void removeNotification(int i) {
 		notifications.remove(i);
+		save();
 	}
 
 	public ArrayList<String> getNotifications() {
@@ -324,6 +346,7 @@ public class User {
 		for (int i = friendRequests.size()-1; i>=0; i--)
 			if (friendRequests.get(i).getSender() == u)
 				friendRequests.remove(i);
+		save();
 	}
 
 	/**
@@ -364,10 +387,50 @@ public class User {
 	*/
 	public void setPicture(String p){
 		profilePic = p;
+		save();
 	}
 
 	private void save(){
-
+		try {
+			File file = new File("/home/fdepa7na/tomcat/webapps/filbook/users/" + email + ".user");
+			PrintWriter pw = new PrintWriter(new FileWriter(file));
+			pw.println(this.email);
+			pw.println(this.name);
+			pw.println(this.password);
+			pw.println(this.birthday.get(Calendar.MONTH) + "/" + this.birthday.get(Calendar.DAY_OF_MONTH) + "/" + this.birthday.get(Calendar.YEAR));
+			pw.println(this.gender);
+			pw.println(this.job);
+			pw.println(this.school);
+			pw.println(this.relationship);
+			pw.println(this.partner);
+			pw.println(this.phone);
+			pw.println(this.isPrivate);
+			pw.println(this.profilePic);
+			pw.println("***");
+			for (User f : friendList)
+				pw.println(f.email);
+			pw.println("---");
+			for (Group g : groupList)
+				pw.println(g.getName());
+			pw.println("@@@");
+			for (String n : notifications)
+				pw.println(n);
+			pw.println("###");
+			for (FriendRequest fr : friendRequests)
+				pw.println(fr.getSender().getEmail());
+			pw.println("---");
+			for (Action t : this.getWall().getPosts()){
+				pw.println(t.getCreator());	
+				pw.println(t.getDate());
+				for (Comment c : t.getComments()){
+					pw.println(c.getAuthor());
+					pw.println(c.getDate());
+					pw.println(c.getText());
+					pw.println("***");
+				}
+			pw.println("^^^");
+			}
+		} catch (Exception e) {}
 	}
 
 	public void load(String filename){

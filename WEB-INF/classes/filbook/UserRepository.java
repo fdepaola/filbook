@@ -66,7 +66,6 @@ public class UserRepository{
 	Restores the system back to its most recently saved state. Repopulates all objects in memory and their associations with each other. This method is only called when the single instance of the UserRepository is instantiated. 
 	*/
 	private void bootstrap(){
-/*
 		UserList ul = new UserList();
 		File currentDir = new File("/home/fdepa7na/tomcat/webapps/filbook/users/");
 		String[] userFileNames = currentDir.list(ul);
@@ -78,6 +77,15 @@ public class UserRepository{
 		for (User u : instance().getAllUsers()) {
 			u.load("/home/fdepa7na/tomcat/webapps/filbook/users/" + u.getEmail() + ".user");
 		} 
-*/
+	}
+}
+
+class UserList implements FilenameFilter {
+	public boolean accept(File dir, String name) {
+		if (name.endsWith(".user")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
