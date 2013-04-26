@@ -13,7 +13,7 @@ import java.util.*;
 public abstract class Action{
 
 	private String creator;
-	private Date dateOfPost;
+	private GregorianCalendar dateOfPost;
 	
 	/**
 		Sets the Action's creator member variable.
@@ -33,14 +33,14 @@ public abstract class Action{
 		Sets the Action's date of creation.
 		@param d the date of the action's creation as a Date
 	*/
-	public void setDate(Date d){
-		dateOfPost = d;
+	public void setDate(){
+		dateOfPost = new GregorianCalendar();
 	}
 	/**
 		Returns the Actin's date of creation as a Date.
 		@return the date of the Action's creation as a Date
 	*/
-	public Date getDate(){
+	public GregorianCalendar getDate(){
 		return dateOfPost;
 	}
 	/**

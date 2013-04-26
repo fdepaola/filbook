@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Wall{
 	private User owner;
 	private Group creator;
-	private ArrayList<Action> wallPosts;
+	private ArrayList<TextPost> wallPosts;
 	
 	/**
 		Constructs a new empty Wall for a User.
@@ -54,7 +54,7 @@ public class Wall{
 		return owner;
 	}	
 
-	public ArrayList<Action> getPosts(){
+	public ArrayList<TextPost> getPosts(){
 		return wallPosts;
 	}
 }

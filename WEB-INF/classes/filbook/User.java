@@ -268,9 +268,11 @@ public class User {
 	@param u the User who is sending the new Friend Request
 	*/
 	public void sendFriendRequest(User u){
-		FriendRequest fr = new FriendRequest(this, u);
-		u.friendRequests.add(fr);
-		u.save();
+		if (!isFriends(u)) {
+			FriendRequest fr = new FriendRequest(this, u);
+			u.friendRequests.add(fr);
+			u.save();
+		}
 	}
 	
 	/**
@@ -397,7 +399,9 @@ public class User {
 			pw.println(this.email);
 			pw.println(this.name);
 			pw.println(this.password);
-			pw.println(this.birthday.get(Calendar.MONTH) + "/" + this.birthday.get(Calendar.DAY_OF_MONTH) + "/" + this.birthday.get(Calendar.YEAR));
+			pw.println(this.birthday.get(Calendar.MONTH));
+			pw.println(this.birthday.get(Calendar.DAY_OF_MONTH));
+			pw.println(this.birthday.get(Calendar.YEAR));
 			pw.println(this.gender);
 			pw.println(this.job);
 			pw.println(this.school);
@@ -419,11 +423,14 @@ public class User {
 			for (FriendRequest fr : friendRequests)
 				pw.println(fr.getSender().getEmail());
 			pw.println("---");
-			for (Action t : this.getWall().getPosts()){
-				pw.println(t.getCreator());	
-				pw.println(t.getDate());
+			for (TextPost t : this.getWall().getPosts()){
+				pw.println(t.getCreator().getEmail());	
+				pw.println(t.getDate().get(Calendar.MONTH));
+				pw.println(t.getDate().get(Calendar.DAY_OF_MONTH));
+				pw.println(t.getDate().get(Calendar.YEAR));
+				pw.println(t.getText());
 				for (Comment c : t.getComments()){
-					pw.println(c.getAuthor());
+					pw.println(c.getAuthor().getEmail());
 					pw.println(c.getDate());
 					pw.println(c.getText());
 					pw.println("***");
@@ -434,6 +441,63 @@ public class User {
 	}
 
 	public void load(String filename){
-
-	}
+		try {
+			File f = new File(filename);
+			BufferedReader br = new BufferedReader(new FileReader(f));
+			email = br.readLine();
+			name = br.readLine();
+			password = br.readLine();
+			int mo = (new Integer(br.readLine())).intValue();
+			int da = (new Integer(br.readLine())).intValue();
+			int yr = (new Integer(br.readLine())).intValue();
+			setBirthday(mo, da, yr);
+			gender = br.readLine();
+			job = br.readLine();
+			school = br.readLine();
+			relationship = br.readLine();
+			partner = br.readLine();
+			phone = br.readLine();
+			isPrivate = br.readLine();
+			profilePic = br.readLine();
+			br.readLine();
+			String line = br.readLine();
+			while (!line.equals("---") {
+				User f = UserRepository.instance().getUser(line);
+				this.addFriend(f);
+				line = br.readLine();
+			}
+			line = br.readLine();
+			while (!line.equals("@@@") {
+				Group g = GroupRepository.instance().getGroup(line);
+				this.addGroup(g);
+				g.addMember(this);
+				line = br.readLine();
+			}
+			line = br.readLine();
+			while (!line.equals("###") {
+				notifications.add(br.readLine());
+				line = br.readLine();
+			}
+			line = br.readLine();
+			while (!line.equals("---") {
+				User f = UserRepository.instance().getUser(line);
+				f.sendFriendRequest(this);
+				line = br.readLine();
+			}
+			line = br.readLine();
+			while (!line.equals("^^^") {
+				User u = UserRepository.instance().getUser(line);
+				int m = (new Integer(br.readLine())).intvalue();
+				int d = (new Integer(br.readLine())).intvalue();
+				int y = (new Integer(br.readLine())).intvalue();
+				String t = br.readLine();
+				while (!line.equals("***") {
+					User a = UserRepository.instance().getUser(line);
+					Date d = br.readLine();
+					String t = br.readLine();
+					line = br.readLine();
+				}
+			}
+		} catch (Exception e) {}
+	}	
 }

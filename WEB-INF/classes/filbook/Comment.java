@@ -1,5 +1,5 @@
 package filbook;
-import java.util.Date;
+import java.util.*;
 	
 	/**
 		A Comment is a block of text with an author and date of creation
@@ -9,11 +9,10 @@ import java.util.Date;
 		a recommended character limit).
 		@author Greg
 	*/
-public class Comment {
+public class Comment extends Action {
 
-	private User author;
-	private Date date;
 	private String text;
+
 	/**
 		Constructs a new Comment.
 		@param t the textbody of the Comment
@@ -45,13 +44,9 @@ public class Comment {
 	public void display(){
 
 	}
-	
-	public User getAuthor(){
-		return author;
-	}
 
-	public Date getDate(){
-		return date;
-	}	
+	public ArrayList<Comment> getComments(){
+		//I added this method and made this class extend Action for simplicity's sake. Realized that the Java allowing for comments on comments does not mean our JSP will have to. So effectively this changes nothing from what we had decided from the users' perspective.
+	}
 }
 
