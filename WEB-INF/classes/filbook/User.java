@@ -408,6 +408,10 @@ public class User {
 			pw.println(this.relationship);
 			pw.println(this.partner);
 			pw.println(this.phone);
+			if (isPrivate)
+				pw.println("true");
+			else
+				pw.println("false");
 			pw.println(this.isPrivate);
 			pw.println(this.profilePic);
 			pw.println("***");
@@ -424,13 +428,13 @@ public class User {
 				pw.println(fr.getSender().getEmail());
 			pw.println("---");
 			for (TextPost t : this.getWall().getPosts()){
-				pw.println(t.getCreator().getEmail());	
+				pw.println(t.getCreator());	
 				pw.println(t.getDate().get(Calendar.MONTH));
 				pw.println(t.getDate().get(Calendar.DAY_OF_MONTH));
 				pw.println(t.getDate().get(Calendar.YEAR));
 				pw.println(t.getText());
 				for (Comment c : t.getComments()){
-					pw.println(c.getAuthor().getEmail());
+					pw.println(c.getCreator());
 					pw.println(c.getDate());
 					pw.println(c.getText());
 					pw.println("***");
@@ -451,50 +455,57 @@ public class User {
 			int da = (new Integer(br.readLine())).intValue();
 			int yr = (new Integer(br.readLine())).intValue();
 			setBirthday(mo, da, yr);
-			gender = br.readLine();
+			gender = br.readLine().charAt(0);
 			job = br.readLine();
 			school = br.readLine();
 			relationship = br.readLine();
 			partner = br.readLine();
 			phone = br.readLine();
-			isPrivate = br.readLine();
+			String priv = br.readLine();
+			if (priv.equals("true"))
+				isPrivate = true;
+			else
+				isPrivate = false;
 			profilePic = br.readLine();
 			br.readLine();
 			String line = br.readLine();
-			while (!line.equals("---") {
-				User f = UserRepository.instance().getUser(line);
-				this.addFriend(f);
+			while (!line.equals("---")) {
+				User af = UserRepository.instance().getUser(line);
+				this.addFriend(af);
 				line = br.readLine();
 			}
 			line = br.readLine();
-			while (!line.equals("@@@") {
+			while (!line.equals("@@@")) {
 				Group g = GroupRepository.instance().getGroup(line);
-				this.addGroup(g);
+				this.joinGroup(g);
 				g.addMember(this);
 				line = br.readLine();
 			}
 			line = br.readLine();
-			while (!line.equals("###") {
+			while (!line.equals("###")) {
 				notifications.add(br.readLine());
 				line = br.readLine();
 			}
 			line = br.readLine();
-			while (!line.equals("---") {
-				User f = UserRepository.instance().getUser(line);
-				f.sendFriendRequest(this);
+			while (!line.equals("---")) {
+				User sfr = UserRepository.instance().getUser(line);
+				sfr.sendFriendRequest(this);
 				line = br.readLine();
 			}
 			line = br.readLine();
-			while (!line.equals("^^^") {
-				User u = UserRepository.instance().getUser(line);
-				int m = (new Integer(br.readLine())).intvalue();
-				int d = (new Integer(br.readLine())).intvalue();
-				int y = (new Integer(br.readLine())).intvalue();
+			while (!line.equals("^^^")) {
+				String u = line;
+				int m = (new Integer(br.readLine())).intValue();
+				int d = (new Integer(br.readLine())).intValue();
+				int y = (new Integer(br.readLine())).intValue();
 				String t = br.readLine();
-				while (!line.equals("***") {
-					User a = UserRepository.instance().getUser(line);
-					Date d = br.readLine();
-					String t = br.readLine();
+				while (!line.equals("***")) {
+					u = line;
+					m = (new Integer(br.readLine())).intValue();
+					d = (new Integer(br.readLine())).intValue();
+					y = (new Integer(br.readLine())).intValue();
+					
+					t = br.readLine();
 					line = br.readLine();
 				}
 			}

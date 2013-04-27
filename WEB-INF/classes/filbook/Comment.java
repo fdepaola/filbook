@@ -20,6 +20,12 @@ public class Comment extends Action {
 	public Comment(String t){
 
 	}	
+
+	Comment(String e, int m, int d, int y, String t){
+		creator = e;
+		text = t;
+		dateOfPost = new GregorianCalendar(y, m, d);
+	}		
 	
 	/**
 		Sets the Comment's text member variable.
@@ -44,9 +50,9 @@ public class Comment extends Action {
 	public void display(){
 
 	}
-
+	
 	public ArrayList<Comment> getComments(){
-		//I added this method and made this class extend Action for simplicity's sake. Realized that the Java allowing for comments on comments does not mean our JSP will have to. So effectively this changes nothing from what we had decided from the users' perspective.
+		return comments;
 	}
 }
 

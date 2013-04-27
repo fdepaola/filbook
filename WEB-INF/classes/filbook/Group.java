@@ -13,20 +13,24 @@ public class Group{
 	private Wall wall;
 	private ArrayList<TextPost> notesList;
 	
+	Group(){
+		init();
+	}
+
 	/**
 	Constructs a new Group object with the given name, purpose, and creator instance variables.
 	@param name the given name for the new Group
 	@param purpose a statement of the Group's focus
 	@param creator the User who started the Group
 	*/
-	public Group(String name, String purpose, User creator){
+	Group(String name, User creator){
 		setName(name);
-		setPurpose(purpose);
 		setCreator(creator);
 		init();
 	}
 
 	private void init(){
+		setPurpose("");
 		members = new ArrayList<User>();
 		wall = new Wall(this);
 		notesList = new ArrayList<TextPost>();
@@ -104,4 +108,7 @@ public class Group{
 		return wall;
 	}	
 
+	public void save(){}
+
+	public void load(String filename){}
 }

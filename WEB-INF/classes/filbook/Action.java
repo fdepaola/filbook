@@ -12,8 +12,9 @@ import java.util.*;
 	*/
 public abstract class Action{
 
-	private String creator;
-	private GregorianCalendar dateOfPost;
+	protected String creator;
+	protected GregorianCalendar dateOfPost;
+	protected  ArrayList<Comment> comments;
 	
 	/**
 		Sets the Action's creator member variable.

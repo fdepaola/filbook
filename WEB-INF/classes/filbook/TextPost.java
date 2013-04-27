@@ -1,6 +1,5 @@
 package filbook;
-import java.util.Date;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
 	A TextPost is a sublcass of Actions which can display its creator, date of
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 public class TextPost extends Action{
 	
 	private String text;
-	private ArrayList<Comment> comments;
 	/**
 		Constructs a new TextPost.
 	*/	
@@ -26,6 +24,13 @@ public class TextPost extends Action{
 		Sets the TextPost's text member variable.
 		@param s the text destined to be displayed
 	*/
+
+	TextPost(String e, int m, int d, int y, String t){
+		creator = e;
+		text = t;
+		dateOfPost = new GregorianCalendar(y, m, d);
+	}		
+	
 	public void setText(String t){
 		text = t;
 	}
