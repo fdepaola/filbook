@@ -439,7 +439,7 @@ public class User {
 					pw.println(c.getText());
 					pw.println("***");
 				}
-			pw.println("^^^");
+				pw.println("^^^");
 			}
 		} catch (Exception e) {}
 	}

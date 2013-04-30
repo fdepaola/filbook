@@ -16,7 +16,7 @@ Your E-Mail Address:</td><td><input type=text name="email" /><td></tr>
 Choose a Password:</td><td><input type=password name="pass" /></td></tr>
 <tr><td>
 Re-Type Password:</td><td><input type=password name="pass2" /></td></tr>
-<tr><td>
+<tr><td colspan="2" align="right">
 <input type=submit value="Take Me To The World of the Filberts!" /></td></tr>
 </form>
 </table>
@@ -32,7 +32,7 @@ Re-Type Password:</td><td><input type=password name="pass2" /></td></tr>
 E-Mail:</td><td><input type=text name="email" /></td></tr>
 <tr><td>
 Password:</td><td><input type=password name="pass" /></td></tr>
-<tr><td>
+<tr><td colspan="2" align="right">
 <input type=submit value="Let Me Back In!" /></td></tr>
 </form>
 </table>
