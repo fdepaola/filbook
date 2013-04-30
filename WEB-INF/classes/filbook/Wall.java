@@ -15,13 +15,19 @@ public class Wall{
 		Constructs a new empty Wall for a User.
 		@param u the User who is the new Wall's owner
 	*/
-	public Wall(User u){}
+	public Wall(User u){
+		owner = u;
+		wallPosts = new ArrayList<TextPost>();
+	}
 
 	/**
 		Constructs a new empty Wall for a Group.
 		@param g the Group who is the new Wall's creator
 	*/
-	public Wall(Group g){}
+	public Wall(Group g){
+		creator = g;
+		wallPosts = new ArrayList<TextPost>();
+	}
 
 	/**
 		Adds a TextPost to the current Wall's ArrayList of Actions.
@@ -43,8 +49,12 @@ public class Wall{
 		for calling display() on each of its Comments.
 	*/
 	public void displayWall(){
-		for(int i=0; i<wallPosts.size(); i++){
-			System.out.println(wallPosts.get(i));
+		if(wallPosts.size()==0){
+			System.out.println(owner.getName()+"'s wall is empty.");
+		}else{
+			for(int i=0; i<wallPosts.size(); i++){
+				System.out.println(wallPosts.get(i));
+			}
 		}
 	}
 	/**

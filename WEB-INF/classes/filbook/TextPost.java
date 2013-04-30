@@ -17,8 +17,9 @@ public class TextPost extends Action{
 	/**
 		Constructs a new TextPost.
 	*/	
-	public TextPost(){
- 		
+	public TextPost(User u, String s){
+ 		creator = u.getName();
+		text = s;
 	}
 	/**
 		Sets the TextPost's text member variable.

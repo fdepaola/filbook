@@ -1,9 +1,12 @@
 <%@ page import = "filbook.*" %>
 
 <%
-User postWriter = ((User) session.getAttribute("userAccount"));
-User wallOwner = ((User) UserRepository.instance().getUser(request.getParameter("toView")));
+User currentUser = ((User) session.getAttribute("userAccount"));
+User view = ((User) session.getAttribute("wallOwner"));
+//User view = ((User) UserRepository.instance().getUser(request.getParameter("toView")));
+String s = request.getParameter("newWallPost");
 
-wallOwner.getWall.addWallPost("newWallPost");
-response.sendRedirect("home.jsp");
+TextPost t = new TextPost(currentUser, s);
+view.getWall().addWallPost(t);
+response.sendRedirect("profile.jsp");
 %>
