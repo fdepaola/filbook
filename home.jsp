@@ -8,6 +8,7 @@ if (currentUser == null)
 else {
 ArrayList<User> allUsers = UserRepository.instance().getAllUsers();
 out.println(currentUser.getName());
+ArrayList<Group> allGroups = GroupRepository.instance().getAllGroups();
 %>
 <form action="profile.jsp" method=POST>
 <select name="toView">
@@ -22,6 +23,18 @@ for (int i=0; i<allUsers.size(); i++){
 </select>
 <input type=submit value="View Profile" />
 </form>
+<form action="group.jsp" method=POST>
+<select name="group">
+<%
+for (int i=0; i<allGroups.size(); i++){
+	Group showGroup = allGroups.get(i);
+	out.println("<option value=" + showGroup.getName() + ">" + showGroup.getName() + "</option>");
+}
+%>
+</select>
+<input type=submit value="View Group's Page" />
+</br>
+</br>
 <%
 for (String s : currentUser.getNotifications()){
 	out.println(s + "</br>");

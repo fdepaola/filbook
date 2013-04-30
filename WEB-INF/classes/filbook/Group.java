@@ -1,5 +1,6 @@
 package filbook;
-import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
 
 /**
 A collection of User objects who share some common interest.

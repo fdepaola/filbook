@@ -37,7 +37,14 @@ friends
 </tr>
 <tr height=30%>
 <td>
-groups
+Groups: </br>
+<%
+	if (view.getGroups().isEmpty())
+		out.println(view.getName() + " isn't in any groups!</br></br>");
+	for (Group g : view.getGroups())
+		out.println("<a href=\"group.jsp?group=" + g.getName() + "\">" + g.getName() + "</a>");
+	out.println("<a href=\"newGroup.jsp\">Create a Group</a>");
+%>
 </td>
 </tr>
 </table>

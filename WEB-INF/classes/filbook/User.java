@@ -73,7 +73,6 @@ public class User {
 	*/
 	public void setName(String n) {
 		name = n;
-		save();
 	}
 	
 	/**
@@ -218,7 +217,6 @@ public class User {
 	*/
 	void setEmail(String e) {
 		email = e;
-		save();
 	}
 	
 	/**
@@ -235,7 +233,6 @@ public class User {
 	*/
 	public void setPassword(String p) {
 		password = p;
-		save();
 	}
 		
 	/**
@@ -318,6 +315,10 @@ public class User {
 		save();
 	}
 
+	public ArrayList<Group> getGroups(){
+		return groupList;
+	}
+
 	/**
 	Adds a new String to the User's notifications list that describes a new activity such as a relevant Wall Post or Comment. The String will indicate what User performed the activity and what specific activity that User performed. For example: "Greg posted on your Wall."
 	@param n the String that summarizes the new activity
@@ -394,8 +395,8 @@ public class User {
 
 	private void save(){
 		try {
-			File file = new File("/home/fdepa7na/tomcat/webapps/filbook/users/" + email + ".user");
-			PrintWriter pw = new PrintWriter(new FileWriter(file));
+			File f = new File("/home/fdepa7na/tomcat/webapps/filbook/users/" + email.replaceAll("[\\W]", "") + ".user");
+			PrintWriter pw = new PrintWriter(new FileWriter(f));
 			pw.println(this.email);
 			pw.println(this.name);
 			pw.println(this.password);
@@ -415,8 +416,8 @@ public class User {
 			pw.println(this.isPrivate);
 			pw.println(this.profilePic);
 			pw.println("***");
-			for (User f : friendList)
-				pw.println(f.email);
+			for (User fr : friendList)
+				pw.println(fr.email);
 			pw.println("---");
 			for (Group g : groupList)
 				pw.println(g.getName());
@@ -424,8 +425,8 @@ public class User {
 			for (String n : notifications)
 				pw.println(n);
 			pw.println("###");
-			for (FriendRequest fr : friendRequests)
-				pw.println(fr.getSender().getEmail());
+			for (FriendRequest frq : friendRequests)
+				pw.println(frq.getSender().getEmail());
 			pw.println("---");
 			for (TextPost t : this.getWall().getPosts()){
 				pw.println(t.getCreator());	

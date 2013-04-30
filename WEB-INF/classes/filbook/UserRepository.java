@@ -36,7 +36,7 @@ public class UserRepository{
 	@return the User that owns the parameter e-mail address.
 	*/
 	public User getUser(String email){
-		User aUser = userTable.get(email);
+		User aUser = userTable.get(email.replaceAll("[\\W]",""));
     		return aUser;
 	}	
 
@@ -49,7 +49,7 @@ public class UserRepository{
 	*/
 	public User createNewUser(String name, String email, String password){
 		User newUser = new User(name, email, password);
-		userTable.put(email, newUser);
+		userTable.put(email.replaceAll("[\\W]",""), newUser);
 		return newUser;
 	}		
 
@@ -71,11 +71,10 @@ public class UserRepository{
 		String[] userFileNames = currentDir.list(ul);
 		for (int i=0; i<userFileNames.length; i++) {
 			User nu = new User();
-			nu.setEmail(userFileNames[i].substring(0, userFileNames[i].length()-5));
 			userTable.put(userFileNames[i].substring(0, userFileNames[i].length()-5), nu);
 		}		
 		for (User u : instance().getAllUsers()) {
-			u.load("/home/fdepa7na/tomcat/webapps/filbook/users/" + u.getEmail() + ".user");
+			u.load("/home/fdepa7na/tomcat/webapps/filbook/users/" + u.getEmail().replaceAll("[\\W]", "") + ".user");
 		} 
 	}
 }
