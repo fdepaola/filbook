@@ -63,12 +63,31 @@ ArrayList<TextPost> viewWall = view.getWall().getPosts();
 if(viewWall.size()==0){
 	out.println(view.getName()+"'s wall is empty. :(");
 }
-for(int i=0; i<viewWall.size(); i++){
+for(int i=viewWall.size()-1; i>=0; i--){
+	
 	out.println("<tr><td>");
 	out.println(viewWall.get(i).getCreator()+ " posted: ");%><br><%
-	out.println(viewWall.get(i).getText());%><br><%
-	out.println("</td></tr>");
+	out.println(viewWall.get(i).getText());
+	
+	ArrayList<Comment> c = viewWall.get(i).getComments();
+	for (int n=0; n<c.size(); n++){
+		out.println("<br><br>");
+		out.println(viewWall.get(i).getComments().get(n).getCreator()+ " commented: ");
+		out.println("<br>");
+		out.println(viewWall.get(i).getComments().get(n).getText());
+	}
+	out.println("<br><br>");
+	out.println("This post has " + c.size() + " comments.");
+		
+	//TextPost txt = ((TextPost) session.setAttribute(viewWall.get(i)));
+	//TextPost t = viewWall.get(i);
+	//session.setAttribute("txt", t);
+	out.println("<form name=\""+i+"\" action=\"comment.jsp\" method=\"get\"><input type=\"hidden\" name=\"txt\" value=\""+i+"\" /><textarea name=\"newComment\">");
+	//out.println("input type=\"hidden\" name=\"txt\" value=\"" + i + "\" />");
+	out.println("Comment on this post");
+	out.println("</textarea><br><input type=\"submit\" value=\"Comment\" /></form></td></tr>");
 }
+	out.println("</td></tr>");
 %>
 </table>
 <%

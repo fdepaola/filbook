@@ -17,8 +17,9 @@ public class Comment extends Action {
 		Constructs a new Comment.
 		@param t the textbody of the Comment
 	*/	
-	public Comment(String t){
-
+	public Comment(User u, String t){
+		creator = u.getName();
+		text = t;
 	}	
 
 	Comment(String e, int m, int d, int y, String t){

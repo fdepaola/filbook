@@ -20,6 +20,7 @@ public class TextPost extends Action{
 	public TextPost(User u, String s){
  		creator = u.getName();
 		text = s;
+		comments = new ArrayList<Comment>();
 	}
 	/**
 		Sets the TextPost's text member variable.
