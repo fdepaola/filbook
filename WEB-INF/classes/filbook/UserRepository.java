@@ -18,6 +18,7 @@ public class UserRepository{
 	public static UserRepository instance(){
 		if(theInstance==null){
 			theInstance = new UserRepository();
+			GroupRepository.instance();
 			theInstance.bootstrap();
 		}
 		return theInstance;
@@ -71,6 +72,7 @@ public class UserRepository{
 		String[] userFileNames = currentDir.list(ul);
 		for (int i=0; i<userFileNames.length; i++) {
 			User nu = new User();
+			nu.setEmail(userFileNames[i].substring(0, userFileNames[i].length()-5));
 			userTable.put(userFileNames[i].substring(0, userFileNames[i].length()-5), nu);
 		}		
 		for (User u : instance().getAllUsers()) {

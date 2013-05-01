@@ -35,6 +35,7 @@ public class Group{
 		members = new ArrayList<User>();
 		wall = new Wall(this);
 		notesList = new ArrayList<TextPost>();
+		save();
 	}
 
 	/**
@@ -59,6 +60,7 @@ public class Group{
 	*/
 	public void setPurpose(String p){
 		purpose = p;
+		save();
 	}	
 
 	/**
@@ -91,6 +93,7 @@ public class Group{
 	*/
 	public void addMember(User u){
 		members.add(u);
+		save();
 	}
 
 	/**
@@ -99,6 +102,7 @@ public class Group{
 	*/
 	public void removeMember(User u){
 		members.remove(u);
+		save();
 	}
 
 	/**
@@ -134,7 +138,7 @@ public class Group{
 				}
 				pw.println("^^^");
 			}	
-		} catch (Exception e) {}
+		} catch (Exception e) {e.printStackTrace();}
 	}
 
 
@@ -145,6 +149,6 @@ public class Group{
 			name = br.readLine();
 			creator = UserRepository.instance().getUser(br.readLine());
 			purpose = br.readLine();
-		} catch (Exception e) {}
+		} catch (Exception e) {e.printStackTrace();}
 	}
 }

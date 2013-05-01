@@ -400,19 +400,15 @@ public class User {
 			pw.println(this.email);
 			pw.println(this.name);
 			pw.println(this.password);
-			pw.println(this.birthday.get(Calendar.MONTH));
-			pw.println(this.birthday.get(Calendar.DAY_OF_MONTH));
-			pw.println(this.birthday.get(Calendar.YEAR));
+			//pw.println(this.birthday.get(Calendar.MONTH));
+			//pw.println(this.birthday.get(Calendar.DAY_OF_MONTH));
+			//pw.println(this.birthday.get(Calendar.YEAR));
 			pw.println(this.gender);
 			pw.println(this.job);
 			pw.println(this.school);
 			pw.println(this.relationship);
 			pw.println(this.partner);
 			pw.println(this.phone);
-			if (isPrivate)
-				pw.println("true");
-			else
-				pw.println("false");
 			pw.println(this.isPrivate);
 			pw.println(this.profilePic);
 			pw.println("***");
@@ -443,7 +439,7 @@ public class User {
 				pw.println("^^^");
 			}
 			pw.close();
-		} catch (Exception e) {}
+		} catch (Exception e) {e.printStackTrace();}
 	}
 
 	public void load(String filename){
@@ -511,6 +507,6 @@ public class User {
 					line = br.readLine();
 				}
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {e.printStackTrace();}
 	}	
 }

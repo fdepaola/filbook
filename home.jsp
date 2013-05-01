@@ -6,6 +6,7 @@ User currentUser = ((User) session.getAttribute("userAccount"));
 if (currentUser == null)
 	response.sendRedirect("register.jsp");
 else {
+session.setAttribute("wallOwner",currentUser);
 ArrayList<User> allUsers = UserRepository.instance().getAllUsers();
 out.println(currentUser.getName());
 ArrayList<Group> allGroups = GroupRepository.instance().getAllGroups();
@@ -33,6 +34,7 @@ for (int i=0; i<allGroups.size(); i++){
 %>
 </select>
 <input type=submit value="View Group's Page" />
+</form>
 </br>
 </br>
 <%
@@ -48,7 +50,7 @@ for (FriendRequest fr : currentUser.getFriendRequests()){
 
 }
 %>
-<form method="post" action="">
+<form action="wallPost.jsp" method=POST>
 <textarea name="newWallPost" cols="70" rows="4">
 Write on this person's wall!
 </textarea><br>

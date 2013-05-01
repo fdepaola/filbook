@@ -11,7 +11,7 @@
 	}
 	if (currentUser == null || view == null)
 		response.sendRedirect("home.jsp");
-	if (!currentUser.isFriends(view)) {
+	if (!currentUser.isFriends(view) && currentUser != view) {
 		out.println("<form action =\"friendRequest.jsp\" method=POST><input type=\"hidden\" name=\"newRequest\" value=\"" + view.getEmail() + "\" /><input type=submit value=\"Send Friend Request\" /></form>");
 	}
 	//out.println(view.getName() + "'s wall.");

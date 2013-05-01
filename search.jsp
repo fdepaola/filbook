@@ -11,11 +11,11 @@ String search = request.getParameter("query");
 <%
 	for (User u : UserRepository.instance().getAllUsers())
 		if (u.getName().contains(search) || u.getEmail().contains(search))
-			out.println(u.getName());
-%> 
+			out.println("<form action=\"profile.jsp\" method=POST><input type=hidden name=\"view\" value=\"" + u.getEmail() + "\" />" + u.getName() + "<input type=submit value=\"View!\" /></form></br>");
+%>
 <h2>Matching Groups</h2>
 <%
 	for (Group g : GroupRepository.instance().getAllGroups())
 		if (g.getName().contains(search) || g.getPurpose().contains(search))
-			out.println(g.getName());
+			out.println("<form action=\"group.jsp\" method=POST><input type=hidden name=\"group\" value=\"" + g.getName() + "\" />" + g.getName() + "<input type=submit value=\"View!\" /></form></br>");
 %>
