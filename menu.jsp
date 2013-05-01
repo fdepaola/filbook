@@ -6,8 +6,9 @@ The Filbert Site</td>
 <td><img src="http://rosemary.umw.edu/~stephen/cpsc330/filbert.jpg" alt="Lamp" align=top width="150" height="175"></td>
 <td valign=top>
 Search for other Filberts or Filbert-groups!</br>
+<form action="search.jsp">
 <input type=text name="query" />
-<form action="search.jsp"><input type=submit value="Search Here!"></form></td>
+<input type=submit value="Search Here!"></form></td>
 <td valign=top align=right>
 <%
 	User currentUser = ((User) session.getAttribute("userAccount"));

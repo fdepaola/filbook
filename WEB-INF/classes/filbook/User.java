@@ -442,6 +442,7 @@ public class User {
 				}
 				pw.println("^^^");
 			}
+			pw.close();
 		} catch (Exception e) {}
 	}
 
