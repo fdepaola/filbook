@@ -50,16 +50,62 @@ for (FriendRequest fr : currentUser.getFriendRequests()){
 
 }
 %>
-<form action="wallPost.jsp" method=POST>
-<textarea name="newWallPost" cols="70" rows="4">
-Write on this person's wall!
-</textarea><br>
-<input type="submit" value="Submit" />
-</form>
+<table border=1 width=20% height=100% style="float:left">
+<tr height=10%>
+<td>
+<%out.println(currentUser.getName() + "'s homepage and newsfeed");%>
+</td></tr>
+<tr height=30%>
+<td>
+Notes: <br>
 <%
-if(currentUser!=null){
-out.println("currentUser.getWall().displayWall();");
+	if(currentUser.getNotes().isEmpty())
+		out.println("You have no notes :(  Try writing one for your fellow Filberts!");
+	for(Note n : currentUser.getNotes())
+		out.println("<a href=\"note.jsp?title="+n.getTitle() +"\">" + n.getTitle()+"</a><br>");
+//  n.getTitle()+"<br>");
+	out.println("<br><a href=\"newNote.jsp\">Write a Note</a>");
+%>
+</td>
+</tr>
+<tr height=30%>
+<td>
+Friends: <br>
+<%
+	if(currentUser.getFriends().isEmpty())
+		out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
+	for (User f : currentUser.getFriends())
+		out.println(f.getName()+"<br>");
+%>
+</td>
+</tr>
+<tr height=30%>
+<td>
+Groups: </br>
+<%
+        if (currentUser.getGroups().isEmpty())
+                out.println(currentUser.getName() + " isn't in any groups!</br></br>");
+        for (Group g : currentUser.getGroups())
+                out.println("<a href=\"group.jsp?group=" + g.getName() + "\">" + g.getName() + "</a><br>");
+        out.println("<br><a href=\"newGroup.jsp\">Create a Group</a>");
+%>
+</td>
+</tr>
+</table>
+<table border=1 width=80% height=100% style="float:right">
+<%
+ArrayList<NewsFeedItem> news = currentUser.getNewsfeed();
+
+if(news.size()==0){
+	out.println("Your newsfeed is empty :(  Get out there and befriend Filberts!");
+	}
+for(int i=news.size()-1; i>=0; i--){
+	out.println("<tr><td>");
+	out.println(news.get(i).getCreator()+ " " + news.get(i).getDescription());
+	out.println("</td></tr>");
 }
 %>
-
+</textarea><br>
+</form></td></tr>
+</table>
 </body>

@@ -18,10 +18,11 @@ public class User {
 	private String email;
 	private String password;
 	private boolean isPrivate;
+	private ArrayList<NewsFeedItem> newsfeed;
 	private ArrayList<User> friendList;
 	private ArrayList<Group> groupList;
 	private Hashtable<String, MessageThread> inbox;
-	private ArrayList<TextPost> notesList;
+	private ArrayList<Note> notesList;
 	private ArrayList<String> notifications;
 	private ArrayList<FriendRequest> friendRequests;
 	private Wall wall;
@@ -57,10 +58,11 @@ public class User {
 		setPartner(null);
 		setPhone(null);	
 		setPrivate(false);
+		newsfeed = new ArrayList<NewsFeedItem>();
 		friendList = new ArrayList<User>();
 		groupList = new ArrayList<Group>();
 		inbox = new Hashtable<String, MessageThread>(100);
-		notesList = new ArrayList<TextPost>();
+		notesList = new ArrayList<Note>();
 		notifications = new ArrayList<String>();
 		friendRequests = new ArrayList<FriendRequest>();
 		wall = new Wall(this);
@@ -295,7 +297,20 @@ public class User {
 		save();
 		u.save();
 	}
-
+	
+	public ArrayList<User> getFriends(){
+		return friendList;
+	}
+	
+	public void addNote(Note n){
+		notesList.add(n);
+	}
+	public void removeNote(int i){
+		notesList.remove(i);
+	}	
+	public ArrayList<Note> getNotes(){
+		return notesList;
+	}
 	/**
 	Adds the User to the specified Group's member list and adds this Group to the User's groups list. If the User is already a member of the Group this does nothing.
 	@param g the Group that the User is joining
@@ -335,6 +350,13 @@ public class User {
 	public void removeNotification(int i) {
 		notifications.remove(i);
 		save();
+	}
+	
+	public ArrayList<NewsFeedItem> getNewsfeed(){
+		return newsfeed;
+	}
+	public void addNewsFeedItem(NewsFeedItem a){
+		newsfeed.add(a);
 	}
 
 	public ArrayList<String> getNotifications() {

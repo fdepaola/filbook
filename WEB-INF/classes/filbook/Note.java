@@ -2,7 +2,7 @@ package filbook;
 import java.util.*;
 
 /**
-	A TextPost is a sublcass of Actions which can display its creator, date of
+	A Note is a sublcass of Actions which can display its creator, date of
 	creation, and primary text.  Users should specify a character limit when
 	creating a textbody.  Should acharacter limit not be specified, the default
 	character limit of 2147483647 will be used.  Be warned: it is extremely 
@@ -11,49 +11,64 @@ import java.util.*;
 	
 	@author Greg
 	*/
-public class TextPost extends Action{
+public class Note extends Action{
 	
-	protected String text;
+	private String text;
+	private String title;
+	private int index;
 	/**
-		Constructs a new TextPost.
+		Constructs a new Note.
 	*/	
-	public TextPost(User u, String s){
+	public Note(User u, String noteTitle, String noteText){
  		creator = u.getName();
-		text = s;
+		title = noteTitle;
+		text = noteText;
 		comments = new ArrayList<Comment>();
 	}
 	/**
-		Sets the TextPost's text member variable.
+		Sets the Note's text member variable.
 		@param s the text destined to be displayed
 	*/
 
-	TextPost(String e, int m, int d, int y, String t){
+	Note(String e, int m, int d, int y, String t){
 		creator = e;
 		text = t;
 		dateOfPost = new GregorianCalendar(y, m, d);
 	}		
-	
+	public void setIndex(int i){
+		index = i;
+	}
+	public int getIndex(){
+		return index;
+	}
+	public void setTitle(String t){
+		title = t;
+	}
+	public String getTitle(){
+		return title;
+	}
+		
 	public void setText(String t){
 		text = t;
 	}
 	/**
-		Returns the TextPost's text as a String.
+		Returns the Note's text as a String.
 		@return the text to be displayed
 	*/
 	public String getText(){
 		return text;
 	}
 	/**
-		Adds a Comment to the TextPost's ArrayList of Comments.  Default
+		Adds a Comment to the Note's ArrayList of Comments.  Default
 		addition locaiton is at the end of the ArrayList in order to 
 		preserve ascending order based on time of post.
-		@param c the Comment to be added to the TextPost
+		@param c the Comment to be added to the Note
 	*/
 	public void addComment(Comment c){
 		comments.add(c);
 	}
 	/**
-		Removes a Comment from the TextPost's ArrayList of Comments.
+		Removes a Comment from the Note's ArrayList of Comments.
 		The Comment will be removed based on matching the Comment's index 
 		lcoation.
 	*/
@@ -61,8 +76,8 @@ public class TextPost extends Action{
 
 	}
 	/**
-		Prints out the TextPost's creator, dateOfPost, and text, as well as
-		manually iterrating through the TextPost's Comments and calling the
+		Prints out the Note's creator, dateOfPost, and text, as well as
+		manually iterrating through the Note's Comments and calling the
 		display() method for each Comment.
 	*/
 	public void display(){
