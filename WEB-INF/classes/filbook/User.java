@@ -50,7 +50,7 @@ public class User {
 	}
 
 	private void init(){
-		birthday = null;
+		setBirthday(0,0,0);
 		setGender("Unspecified");
 		setJob("");
 		setSchool("");

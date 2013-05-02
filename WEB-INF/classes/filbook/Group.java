@@ -116,28 +116,29 @@ public class Group{
 	public void save(){
 		try {
 			File file = new File("/home/fdepa7na/tomcat/webapps/filbook/groups/" + name + ".group");
-			PrintWriter pw = new PrintWriter(new FileWriter(file));
-			pw.println(this.name);
-			pw.println(this.creator.getEmail());
-			pw.println(this.purpose);
-			pw.println("***");
+			PrintWriter p = new PrintWriter(new FileWriter(file));
+			p.println(this.name);
+			p.println(this.creator.getEmail());
+			p.println(this.purpose);
+			p.println("***");
 			for (User u : members)
-				pw.println(u.getEmail());
-			pw.println("---");
+				p.println(u.getEmail());
+			p.println("---");
 			for (TextPost t : this.getWall().getPosts()){
-				pw.println(t.getCreator());	
-				pw.println(t.getDate().get(Calendar.MONTH));
-				pw.println(t.getDate().get(Calendar.DAY_OF_MONTH));
-				pw.println(t.getDate().get(Calendar.YEAR));
-				pw.println(t.getText());
+				p.println(t.getCreator());	
+				p.println(t.getDate().get(Calendar.MONTH));
+				p.println(t.getDate().get(Calendar.DAY_OF_MONTH));
+				p.println(t.getDate().get(Calendar.YEAR));
+				p.println(t.getText());
 				for (Comment c : t.getComments()){
-					pw.println(c.getCreator());
-					pw.println(c.getDate());
-					pw.println(c.getText());
-					pw.println("***");
+					p.println(c.getCreator());
+					p.println(c.getDate());
+					p.println(c.getText());
+					p.println("***");
 				}
-				pw.println("^^^");
+				p.println("^^^");
 			}	
+			p.close();
 		} catch (Exception e) {e.printStackTrace();}
 	}
 
