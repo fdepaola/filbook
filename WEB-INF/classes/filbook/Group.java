@@ -126,13 +126,13 @@ public class Group{
 			p.println("---");
 			for (TextPost t : this.getWall().getPosts()){
 				p.println(t.getCreator());	
-				p.println(t.getDate().get(Calendar.MONTH));
-				p.println(t.getDate().get(Calendar.DAY_OF_MONTH));
-				p.println(t.getDate().get(Calendar.YEAR));
+				//p.println(t.getDate().get(Calendar.MONTH));
+				//p.println(t.getDate().get(Calendar.DAY_OF_MONTH));
+				//p.println(t.getDate().get(Calendar.YEAR));
 				p.println(t.getText());
 				for (Comment c : t.getComments()){
 					p.println(c.getCreator());
-					p.println(c.getDate());
+					//p.println(c.getDate());
 					p.println(c.getText());
 					p.println("***");
 				}
@@ -150,6 +150,25 @@ public class Group{
 			name = br.readLine();
 			creator = UserRepository.instance().getUser(br.readLine());
 			purpose = br.readLine();
+			String line = br.readLine();
+			while (!line.equals("^^^")) {
+				User u = UserRepository.instance().getUser(line);
+				//int m = (new Integer(br.readLine())).intValue();
+				//int d = (new Integer(br.readLine())).intValue();
+				//int y = (new Integer(br.readLine())).intValue();
+				String t = br.readLine();
+				TextPost nt = new TextPost(u, t);
+				while (!line.equals("***")) {
+					u = UserRepository.instance().getUser(line);
+					//m = (new Integer(br.readLine())).intValue();
+					//d = (new Integer(br.readLine())).intValue();
+					//y = (new Integer(br.readLine())).intValue();
+					t = br.readLine();
+					Comment nc = new Comment(u, t);
+					nt.addComment(nc);
+					line = br.readLine();
+				}
+			}
 		} catch (Exception e) {e.printStackTrace();}
 	}
 }

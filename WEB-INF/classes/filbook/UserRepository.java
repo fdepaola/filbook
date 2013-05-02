@@ -18,8 +18,9 @@ public class UserRepository{
 	public static UserRepository instance(){
 		if(theInstance==null){
 			theInstance = new UserRepository();
-			GroupRepository.instance();
 			theInstance.bootstrap();
+			GroupRepository.instance();
+			theInstance.bootstrap2();
 		}
 		return theInstance;
 	}
@@ -75,6 +76,9 @@ public class UserRepository{
 			nu.setEmail(userFileNames[i].substring(0, userFileNames[i].length()-5));
 			userTable.put(userFileNames[i].substring(0, userFileNames[i].length()-5), nu);
 		}		
+	}
+
+	private void bootstrap2(){
 		for (User u : instance().getAllUsers()) {
 			u.load("/home/fdepa7na/tomcat/webapps/filbook/users/" + u.getEmail().replaceAll("[\\W]", "") + ".user");
 		} 
