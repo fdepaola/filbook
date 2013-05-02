@@ -75,7 +75,7 @@ Friends: <br>
 	if(currentUser.getFriends().isEmpty())
 		out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
 	for (User f : currentUser.getFriends())
-		out.println(f.getName()+"<br>");
+		out.println("<a href=\"profile.jsp?toView=" + f.getEmail() + "\">" + f.getName() + "<br>");
 %>
 </td>
 </tr>

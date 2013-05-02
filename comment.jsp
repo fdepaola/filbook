@@ -19,5 +19,5 @@ int i = Integer.parseInt(t);
 
 Comment c = new Comment(currentUser, s);
 view.getWall().getPosts().get(i).addComment(c);
-response.sendRedirect("profile.jsp");
+response.sendRedirect("profile.jsp?toView="+view.getEmail());
 %>

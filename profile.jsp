@@ -23,17 +23,57 @@
 	<table border=1 width=20% height=100% style="float:left">
 	<tr height=10%>
 	<td>
-	<%out.println(view.getName() + "'s wall");%>
+	<%out.println(view.getName() + "'s wall");
+	if(view.getBirthday()!=null){
+	        //out.println(view.getBirthday());
+	%><br><%}
+	if(view.getPhone()!=null){
+	        out.println(view.getPhone());
+	%><br><%}
+	if(view.getGender()=='m' || view.getGender()=='f' || view.getGender()=='u'){
+	        out.println("Gender: " + view.getGender());
+	%><br><%}
+	if(view.getJob()!=null){
+	        out.println("Employer: " + view.getJob());
+	%><br><%}
+	if(view.getSchool()!=null){
+	        out.println("School: " + view.getSchool());
+	%><br><%}
+	if(view.getRelationship()!=null){
+	        out.println(view.getRelationship() + " to:");
+	%><br><%}
+	if(view.getPartner()!=null){
+	        out.println(view.getPartner());
+	}
+
+%>
+
 	</td>
 	</tr>
 	<tr height=30%>
 	<td>
-	notes
+	Notes:<br>
+	<%
+        if(currentUser.getNotes().isEmpty())
+                out.println("You have no notes :(  Try writing one for your fellow Filberts!");
+        for(Note n : currentUser.getNotes())
+                out.println("<a href=\"note.jsp?title="+n.getTitle() +"\">" + n.getTitle()+"</a><br>");
+//  n.getTitle()+"<br>");
+        out.println("<br><a href=\"newNote.jsp\">Write a Note</a>");
+%>
+
 	</td>
 	</tr>
 	<tr height=30%>
 	<td>
-	friends
+	Friends:<br>
+	<%
+        if(currentUser.getFriends().isEmpty())
+                out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
+        for (User f : currentUser.getFriends())
+                out.println("<a href=\"profile.jsp?toView=" + f.getEmail() + "\">" + f.getName() + "<br>");
+	%>
+
 	</td>
 	</tr>
 	<tr height=30%>
@@ -49,12 +89,12 @@
 	</td>
 	</tr>
 	</table>
-
 	<table border=1 width=80% height=100% style="float:right">
 	<tr><td>
 	<form name="addPost" action="wallPost.jsp" method="get">
 	<textarea name="newWallPost" cols="70" rows="4">
-	Write on <%out.print(view.getName());%>'s wall!
+Write on <%out.print(view.getName());%>'s wall!
+
 	</textarea><br>
 	<input type="submit" value="Add Wall Post" />
 	</form></td></tr>

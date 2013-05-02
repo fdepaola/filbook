@@ -17,15 +17,27 @@
         //out.println(view.getName() + "'s wall.");
         session.setAttribute("wallOwner", view);
 	String noteTitle = request.getParameter("title");
-	/*
-	String stringNoteIndex = request.getParameter("noteNumber");
-	int noteIndex = Integer.parseInt(stringNoteIndex);
-	out.println("This is note number " + noteIndex);
-	*/
+	
+	//out.println(noteTitle+"<br><br>");
+        ArrayList<Note> notess = view.getNotes();
+        int noteInd = 1;
+	for(int i=0; i<notess.size(); i++){
+                if(noteTitle.equals(notess.get(i).getTitle())){
+                        noteInd=i;
+                }
+        }
+
+	out.println(noteInd);
 %>
 <table border=0 width=100% align=right>
 <tr><td align=right>
-older note | newer note
+<% 
+	if(noteInd>1){
+		out.print("<a href=\"note.jsp?title=" + notess.get(noteInd-1).getTitle() + "\">older note</a>");
+	}else{
+		out.print("oldest note");
+	}
+	 %>| newer note
 </tr></td>
 </table>
 <table border=1 width=20% height=100% style="float:left">

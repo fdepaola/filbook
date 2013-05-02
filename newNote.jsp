@@ -12,7 +12,7 @@ if (currentUser == null)
 <form action="noteController.jsp" method=POST>
 </td></tr>
 <tr><td>
-Note TItle:</td><td><input type=text name="title" /></td></tr>
+Note Title:</td><td><input type=text name="title" /></td></tr>
 <tr><td>
 Note:</td><td><textarea name="noteBody" cols="50" rows="25">Write your note here.</textarea><td></tr>
 <tr><td colspan="2" align="right">

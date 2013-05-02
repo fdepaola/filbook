@@ -21,5 +21,5 @@ for(int i=0; i<f.size(); i++){
 
 TextPost t = new TextPost(currentUser, s);
 view.getWall().addWallPost(t);
-response.sendRedirect("profile.jsp");
+response.sendRedirect("profile.jsp?toView=" + view.getEmail());
 %>
