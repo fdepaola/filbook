@@ -9,7 +9,7 @@ else{
 	int bdt = Integer.parseInt(request.getParameter("bdate"));
 	int byr = Integer.parseInt(request.getParameter("byear"));
 	String phone = request.getParameter("phone");
-	char gender = request.getParameter("gender").charAt(0);
+	String gender = request.getParameter("gender");
 	String job = request.getParameter("job");
 	String school = request.getParameter("school");
 	String rs = request.getParameter("rs");

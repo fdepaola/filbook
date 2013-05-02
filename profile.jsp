@@ -24,15 +24,16 @@
 	<tr height=10%>
 	<td>
 	<%out.println(view.getName() + "'s wall");
+	out.println("<a href=\"info.jsp?who=" + view.getEmail() + "\">View Info</a>");
 	if(view.getBirthday()!=null){
 	        //out.println(view.getBirthday());
 	%><br><%}
 	if(view.getPhone()!=null){
 	        out.println(view.getPhone());
 	%><br><%}
-	if(view.getGender()=='m' || view.getGender()=='f' || view.getGender()=='u'){
-	        out.println("Gender: " + view.getGender());
-	%><br><%}
+	//if(view.getGender()=='m' || view.getGender()=='f' || view.getGender()=='u'){
+	//        out.println("Gender: " + view.getGender());
+	%><br><%//}
 	if(view.getJob()!=null){
 	        out.println("Employer: " + view.getJob());
 	%><br><%}
@@ -89,6 +90,7 @@
 	</td>
 	</tr>
 	</table>
+	<img src="<%= view.getPicture() %>" />
 	<table border=1 width=80% height=100% style="float:right">
 	<tr><td>
 	<form name="addPost" action="wallPost.jsp" method="get">
