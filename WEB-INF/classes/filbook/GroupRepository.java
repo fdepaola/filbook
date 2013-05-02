@@ -63,7 +63,7 @@ public class GroupRepository{
 	/**
 	Restores the system back to its most recently saved state. Repopulates all objects in memory and their associations with each other. This method is only called when the single instance of the GroupRepository is instantiated. 
 	*/
-	private	void bootstrap(){
+	void bootstrap(){
 		GroupList gl = new GroupList();
 		File currentDir = new File("/home/fdepa7na/tomcat/webapps/filbook/groups/");
 		String[] groupFileNames = currentDir.list(gl);
