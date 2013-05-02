@@ -7,6 +7,7 @@
 		response.sendRedirect("register.jsp");
 	else{
 %>
+<h1>Update your vital stats!</h1>
 <table>
 <form action="modProfileController.jsp"><tr>
 <td>Birthday:</td><td><select name="bmonth">
@@ -42,14 +43,14 @@
 <tr><td>Phone Number:</td><td><input type=text name="phone" value="<%= u.getPhone() %>" /></td></tr>
 <tr><td>Gender:</td><td><select name="gender">
 <%
-	out.println("<option value=\"U\"");
-	if(u.getGender() == 'U')
+	out.println("<option value=\"Unspecified\"");
+	if(u.getGender().equals("Unspecified"))
 		out.println(" selected");
-	out.println(">Unspecified</option><option value=\"M\"");
-	if (u.getGender() == 'M')
+	out.println(">Unspecified</option><option value=\"Male\"");
+	if (u.getGender().equals("Male"))
 		out.println(" selected");	
-	out.println(">Male</option><option value=\"F\"");
-	if (u.getGender() == 'F')
+	out.println(">Male</option><option value=\"Female\"");
+	if (u.getGender().equals("Female"))
 		out.println(" selected");
 	out.println(">Female</option>");
 %>
@@ -82,7 +83,12 @@
 <tr><td colspan="2"><input type=submit value="Update Now!" /></td></tr>
 </form>
 </table>	
+</br>
+<table>
+<form action="picController.jsp" method=POST enctype="multipart/form-data">
 <tr><td>Change your ugly picture!</td><td><input type=file name="pic" /></td></tr>
+<tr><td colspan="2"><input type=submit value="Change this stinking thing!" /></td></tr>
+</form></table>
 </body>
 <%
 }

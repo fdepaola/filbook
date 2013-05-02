@@ -9,7 +9,7 @@ Represents a person who has registered as a user and stores information and acti
 public class User {
 	private String name;
 	private GregorianCalendar birthday;
-	private char gender;
+	private String gender;
 	private String job;
 	private String school;
 	private String relationship;
@@ -51,7 +51,7 @@ public class User {
 
 	private void init(){
 		birthday = null;
-		setGender('U');
+		setGender("Unspecified");
 		setJob("");
 		setSchool("");
 		setRelationship("");
@@ -66,7 +66,7 @@ public class User {
 		notifications = new ArrayList<String>();
 		friendRequests = new ArrayList<FriendRequest>();
 		wall = new Wall(this);
-		setPicture("/profilePics/filbert.jpg");
+		setPicture("profilePics/filbert.jpg");
 	}	
 
 	/**
@@ -93,7 +93,6 @@ public class User {
 	*/
 	public void setBirthday(int month, int date, int year) {
 		birthday = new GregorianCalendar(year, month, date);
-		save();
 	}
 	
 	/**
@@ -112,10 +111,7 @@ public class User {
 	Sets the User's gender member variable to either "Male", "Female", or "Unspecified".
 	@param g the gender of the User
 	*/
-	public void setGender(char g) {
-		g = Character.toUpperCase(g);
-		if (g != 'M' && g != 'F')
-			g = 'U';
+	public void setGender(String g) {
 		gender = g;
 		save();
 	}
@@ -124,7 +120,7 @@ public class User {
 	Returns the User's gender as a char.
 	@return the gender of the User: m for male, f for female, u for unspecified
 	*/
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
@@ -475,7 +471,7 @@ public class User {
 			int da = (new Integer(br.readLine())).intValue();
 			int yr = (new Integer(br.readLine())).intValue();
 			setBirthday(mo, da, yr);
-			gender = br.readLine().charAt(0);
+			gender = br.readLine();
 			job = br.readLine();
 			school = br.readLine();
 			relationship = br.readLine();

@@ -23,7 +23,8 @@
 	<table border=1 width=20% height=100% style="float:left">
 	<tr height=10%>
 	<td>
-	<%out.println(view.getName() + "'s wall");%>
+	<%out.println(view.getName() + "'s wall</br>");
+	out.println("<a href=\"info.jsp?who=" + view.getEmail() + "\">View Info</a>");%>
 	</td>
 	</tr>
 	<tr height=30%>
@@ -49,7 +50,7 @@
 	</td>
 	</tr>
 	</table>
-
+	<img src="<%= view.getPicture() %>" />
 	<table border=1 width=80% height=100% style="float:right">
 	<tr><td>
 	<form name="addPost" action="wallPost.jsp" method="get">
