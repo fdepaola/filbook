@@ -18,7 +18,7 @@ public class Comment extends Action {
 		@param t the textbody of the Comment
 	*/	
 	public Comment(User u, String t){
-		creator = u.getName();
+		creator = u.getEmail();
 		text = t;
 	}	
 

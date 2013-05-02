@@ -444,13 +444,13 @@ public class User {
 			pw.println("---");
 			for (TextPost t : this.getWall().getPosts()){
 				pw.println(t.getCreator());	
-				pw.println(t.getDate().get(Calendar.MONTH));
-				pw.println(t.getDate().get(Calendar.DAY_OF_MONTH));
-				pw.println(t.getDate().get(Calendar.YEAR));
+				//pw.println(t.getDate().get(Calendar.MONTH));
+				//pw.println(t.getDate().get(Calendar.DAY_OF_MONTH));
+				//pw.println(t.getDate().get(Calendar.YEAR));
 				pw.println(t.getText());
 				for (Comment c : t.getComments()){
 					pw.println(c.getCreator());
-					pw.println(c.getDate());
+					//pw.println(c.getDate());
 					pw.println(c.getText());
 					pw.println("***");
 				}
@@ -510,18 +510,20 @@ public class User {
 			}
 			line = br.readLine();
 			while (!line.equals("^^^")) {
-				String u = line;
-				int m = (new Integer(br.readLine())).intValue();
-				int d = (new Integer(br.readLine())).intValue();
-				int y = (new Integer(br.readLine())).intValue();
+				User u = UserRepository.instance().getUser(line);
+				//int m = (new Integer(br.readLine())).intValue();
+				//int d = (new Integer(br.readLine())).intValue();
+				//int y = (new Integer(br.readLine())).intValue();
 				String t = br.readLine();
+				TextPost nt = new TextPost(u, t);
 				while (!line.equals("***")) {
-					u = line;
-					m = (new Integer(br.readLine())).intValue();
-					d = (new Integer(br.readLine())).intValue();
-					y = (new Integer(br.readLine())).intValue();
-					
+					u = UserRepository.instance().getUser(line);
+					//m = (new Integer(br.readLine())).intValue();
+					//d = (new Integer(br.readLine())).intValue();
+					//y = (new Integer(br.readLine())).intValue();
 					t = br.readLine();
+					Comment nc = new Comment(u, t);
+					nt.addComment(nc);
 					line = br.readLine();
 				}
 			}

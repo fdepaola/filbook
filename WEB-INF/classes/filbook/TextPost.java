@@ -18,7 +18,7 @@ public class TextPost extends Action{
 		Constructs a new TextPost.
 	*/	
 	public TextPost(User u, String s){
- 		creator = u.getName();
+ 		creator = u.getEmail();
 		text = s;
 		comments = new ArrayList<Comment>();
 	}
@@ -30,7 +30,7 @@ public class TextPost extends Action{
 	TextPost(String e, int m, int d, int y, String t){
 		creator = e;
 		text = t;
-		dateOfPost = new GregorianCalendar(y, m, d);
+		//dateOfPost = new GregorianCalendar(y, m, d);
 	}		
 	
 	public void setText(String t){
