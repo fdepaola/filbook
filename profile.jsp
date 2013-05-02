@@ -19,7 +19,10 @@
 		session.setAttribute("wallOwner", view);
 	%>
 
-
+	
+	<img src="<%= view.getPicture() %>" />
+	<table border=1 width=100% height=1>
+	</table>
 	<table border=1 width=20% height=100% style="float:left">
 	<tr height=10%>
 	<td>
@@ -53,11 +56,11 @@
 	</tr>
 	<tr height=30%>
 	<td>
-	Notes:<br>
+	<%out.println(view.getName()+"'s Notes: ");%><br>
 	<%
-        if(currentUser.getNotes().isEmpty())
-                out.println("You have no notes :(  Try writing one for your fellow Filberts!");
-        for(Note n : currentUser.getNotes())
+        if(view.getNotes().isEmpty())
+                out.println(view.getName()+ " has no notes :(");
+        for(Note n : view.getNotes())
                 out.println("<a href=\"note.jsp?title="+n.getTitle() +"\">" + n.getTitle()+"</a><br>");
 //  n.getTitle()+"<br>");
         out.println("<br><a href=\"newNote.jsp\">Write a Note</a>");
@@ -67,11 +70,11 @@
 	</tr>
 	<tr height=30%>
 	<td>
-	Friends:<br>
+	<%out.println(view.getName()+"'s Friends: ");%><br>
 	<%
-        if(currentUser.getFriends().isEmpty())
-                out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
-        for (User f : currentUser.getFriends())
+        if(view.getFriends().isEmpty())
+                out.println(view.getName()+"has no friends :(");
+        for (User f : view.getFriends())
                 out.println("<a href=\"profile.jsp?toView=" + f.getEmail() + "\">" + f.getName() + "<br>");
 	%>
 
@@ -79,18 +82,17 @@
 	</tr>
 	<tr height=30%>
 	<td>
-	Groups: </br>
+	<%out.println(view.getName()+"'s Groups: ");%></br>
 	<%
 		if (view.getGroups().isEmpty())
 			out.println(view.getName() + " isn't in any groups!</br></br>");
 		for (Group g : view.getGroups())
-			out.println("<a href=\"group.jsp?group=" + g.getName() + "\">" + g.getName() + "</a>");
-		out.println("<a href=\"newGroup.jsp\">Create a Group</a>");
+			out.println("<a href=\"group.jsp?group=" + g.getName() + "\">" + g.getName() + "</a><br>");
+		out.println("<br><a href=\"newGroup.jsp\">Create a Group</a>");
 	%>
 	</td>
 	</tr>
 	</table>
-	<img src="<%= view.getPicture() %>" />
 	<table border=1 width=80% height=100% style="float:right">
 	<tr><td>
 	<form name="addPost" action="wallPost.jsp" method="get">

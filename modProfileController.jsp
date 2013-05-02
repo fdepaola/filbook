@@ -1,4 +1,5 @@
 <%@ page import = "filbook.*" %>
+<%@ page import = "java.util.ArrayList" %>
 <jsp:include page="menu.jsp" />
 <%
 User u = (User)session.getAttribute("userAccount");
@@ -23,6 +24,16 @@ else{
 	u.setSchool(school);
 	u.setRelationship(rs);
 	u.setPartner(partner);
+	
+	
+        ArrayList<User> f = u.getFriends();
+        String desc = u.getName()+"'s profile information has been modified";
+        NewsFeedItem news = new NewsFeedItem(u, desc);
+        for(int i=0; i<f.size(); i++){
+                f.get(i).addNewsFeedItem(news);
+        }
+
+	
 	response.sendRedirect("modProfile.jsp");
 }
 %>

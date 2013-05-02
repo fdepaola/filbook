@@ -8,14 +8,15 @@
 	String t = request.getParameter("title");
 	String b = request.getParameter("noteBody");
 	
+	Note n = new Note(currentUser, t, b);
+	
 	ArrayList<User> f = currentUser.getFriends();
-	String desc = "wrote a new note.";
+	String desc = "wrote a new note titled \""+n.getTitle() + "\"";
 	NewsFeedItem news = new NewsFeedItem(currentUser, desc);
 	for(int i=0; i<f.size(); i++){
 		f.get(i).addNewsFeedItem(news);
 	}
 			
-	Note n = new Note(currentUser, t, b);
 	ArrayList<Note> nlist = currentUser.getNotes();
 	int noteNum = nlist.size();
 	currentUser.addNote(n);

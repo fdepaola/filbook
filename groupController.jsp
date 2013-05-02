@@ -1,5 +1,7 @@
 <%@ page import = "filbook.*" %>
+<%@ page import = "java.util.ArrayList" %>
 <jsp:include page="menu.jsp" />
+
 <%
 	User currentUser = (User)session.getAttribute("userAccount");
 	if (currentUser == null)
@@ -13,6 +15,15 @@
 		newGroup.setPurpose(desc);
 		currentUser.joinGroup(newGroup);
 		newGroup.addMember(currentUser);
+		
+		String descr = "created a new group " + newGroup.getName();
+		NewsFeedItem n = new NewsFeedItem(currentUser, descr);
+		ArrayList<User> f = currentUser.getFriends();
+		for(int i =0; i<f.size(); i++){
+			f.get(i).addNewsFeedItem(n);
+		}
+		
+
 		response.sendRedirect("group.jsp?group=" + newGroup.getName());
 	}
 

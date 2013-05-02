@@ -50,6 +50,10 @@ for (FriendRequest fr : currentUser.getFriendRequests()){
 
 }
 %>
+<table border=1 width=100% height=1>
+</table>
+<br>
+
 <table border=1 width=20% height=100% style="float:left">
 <tr height=10%>
 <td>
@@ -95,14 +99,21 @@ Groups: </br>
 <table border=1 width=80% height=100% style="float:right">
 <%
 ArrayList<NewsFeedItem> news = currentUser.getNewsfeed();
-
 if(news.size()==0){
 	out.println("Your newsfeed is empty :(  Get out there and befriend Filberts!");
 	}
-for(int i=news.size()-1; i>=0; i--){
-	out.println("<tr><td>");
-	out.println(news.get(i).getCreator()+ " " + news.get(i).getDescription());
-	out.println("</td></tr>");
+if(news.size()>105){
+	for(int i=news.size()-1; i>news.size()-100; i--){
+		out.println("<tr><td>");
+		out.println(news.get(i).getCreator()+" "+news.get(i).getDescription());
+		out.println("</td></tr>");
+	}
+}else{
+	for(int i=news.size()-1; i>=0; i--){
+		out.println("<tr><td>");
+		out.println(news.get(i).getCreator()+ " " + news.get(i).getDescription());
+		out.println("</td></tr>");
+	}
 }
 %>
 </textarea><br>
