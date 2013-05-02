@@ -51,11 +51,11 @@ public class User {
 	private void init(){
 		birthday = null;
 		setGender('U');
-		setJob(null);
-		setSchool(null);
-		setRelationship(null);
-		setPartner(null);
-		setPhone(null);	
+		setJob("");
+		setSchool("");
+		setRelationship("");
+		setPartner("");
+		setPhone("");	
 		setPrivate(false);
 		friendList = new ArrayList<User>();
 		groupList = new ArrayList<Group>();
@@ -400,9 +400,9 @@ public class User {
 			pw.println(this.email);
 			pw.println(this.name);
 			pw.println(this.password);
-			//pw.println(this.birthday.get(Calendar.MONTH));
-			//pw.println(this.birthday.get(Calendar.DAY_OF_MONTH));
-			//pw.println(this.birthday.get(Calendar.YEAR));
+			pw.println(this.birthday.get(Calendar.MONTH));
+			pw.println(this.birthday.get(Calendar.DAY_OF_MONTH));
+			pw.println(this.birthday.get(Calendar.YEAR));
 			pw.println(this.gender);
 			pw.println(this.job);
 			pw.println(this.school);

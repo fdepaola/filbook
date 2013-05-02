@@ -16,6 +16,26 @@ Your E-Mail Address:</td><td><input type=text name="email" /><td></tr>
 Choose a Password:</td><td><input type=password name="pass" /></td></tr>
 <tr><td>
 Re-Type Password:</td><td><input type=password name="pass2" /></td></tr>
+<tr><td>
+Date of Birth (M/D/Y):</td><td><select name="bmo">
+<%
+	for (int i=1; i<13; i++)
+		out.println("<option value=\"" + i + "\">" + i + "</option>");
+%>
+</select>
+<select name="bdt">
+<%
+	for (int i=1; i<32; i++)
+		out.println("<option value=\"" + i + "\">" + i + "</option>");
+%>
+</select>
+<select name="byr">
+<%
+	for (int i=2013; i>1970; i--)
+		out.println("<option value=\"" + i + "\">" + i + "</option>");
+%>
+</select>
+</td></tr>
 <tr><td colspan="2" align="right">
 <input type=submit value="Take Me To The World of the Filberts!" /></td></tr>
 </form>

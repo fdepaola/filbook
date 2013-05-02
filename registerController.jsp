@@ -26,6 +26,7 @@
 		}
 		if(add){
 			User toAdd = UserRepository.instance().createNewUser(name, email, pw);
+			toAdd.setBirthday(Integer.parseInt(request.getParameter("bmo")), Integer.parseInt(request.getParameter("bdt")), Integer.parseInt(request.getParameter("byr")));
 			session.setAttribute("userAccount", toAdd);
 			response.sendRedirect("home.jsp");
 		}
