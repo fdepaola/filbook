@@ -68,10 +68,10 @@
 <td>
 <%out.println(view.getName()+"'s Friends: ");%><br>
 <%
-	if(view.getFriends().isEmpty())
-		out.println(view.getName()+" has no friends :(");
-	for (User f : view.getFriends())
-		out.println(f.getName()+"<br>");
+        if(currentUser.getFriends().isEmpty())
+                out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
+        for (User f : currentUser.getFriends())
+                out.println("<a href=\"profile.jsp?toView=" + f.getEmail() + "\">" + f.getName() + "<br>");
 %>
 </td>
 </tr>

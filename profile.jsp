@@ -5,8 +5,10 @@
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	User view;
 	if (request.getParameter("toView") == null){
+//	if(session.getAttribute("wallOwner").equals(null)){
 		view = currentUser;
 	}else{
+		//view = ((User)session.getAttribute("wallOwner"));
 		view = UserRepository.instance().getUser(request.getParameter("toView"));
 	}
 	if (currentUser == null)
@@ -61,7 +63,7 @@
         if(view.getNotes().isEmpty())
                 out.println(view.getName()+ " has no notes :(");
         for(Note n : view.getNotes())
-                out.println("<a href=\"note.jsp?title="+n.getTitle() +"\">" + n.getTitle()+"</a><br>");
+                out.println("<a href=\"note.jsp?title="+n.getTitle() +"\" >" + n.getTitle()+"</a><br>");
 //  n.getTitle()+"<br>");
         out.println("<br><a href=\"newNote.jsp\">Write a Note</a>");
 %>
