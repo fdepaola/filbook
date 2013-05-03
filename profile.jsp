@@ -4,11 +4,11 @@
 <%
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	User view;
-	if (request.getParameter("toView") == null){
-//	if(session.getAttribute("wallOwner").equals(null)){
+//	if (request.getParameter("toView") == null){
+	if(session.getAttribute("wallOwner").equals(null)){
 		view = currentUser;
 	}else{
-		//view = ((User)session.getAttribute("wallOwner"));
+//		view = ((User)session.getAttribute("wallOwner"));
 		view = UserRepository.instance().getUser(request.getParameter("toView"));
 	}
 	if (currentUser == null)
