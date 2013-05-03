@@ -122,7 +122,7 @@ public class Group{
 			File file = new File("/home/fdepa7na/tomcat/webapps/filbook/groups/" + name + ".group");
 			PrintWriter p = new PrintWriter(new FileWriter(file));
 			p.println(this.name);
-			//p.println(this.creator.getEmail());
+			p.println(this.creator.getEmail());
 			p.println(this.purpose);
 			//p.println("***");
 			//for (User u : members)
