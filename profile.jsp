@@ -4,8 +4,8 @@
 <%
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	User view;
-//	if (request.getParameter("toView") == null){
-	if(session.getAttribute("wallOwner").equals(null)){
+	if (request.getParameter("toView") == null){
+//	if(session.getAttribute("wallOwner").equals(null)){
 		view = currentUser;
 	}else{
 //		view = ((User)session.getAttribute("wallOwner"));
