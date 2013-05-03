@@ -46,9 +46,6 @@ for (FriendRequest fr : currentUser.getFriendRequests()){
 	User sender = fr.getSender();
 	out.println(sender.getName() + "<form action=\"addFriend.jsp\"><input type=hidden name=\"newFriend\" value=\"" + sender.getEmail() + "\" /><input type=submit value=\"Accept?\" /></form>" + "<form action=\"denyFriend.jsp\" /><input type=hidden name=\"deniedFriend\" value=\"" + sender.getEmail() + "\" /><input type=submit value=\"Deny?\" /></form></br>");
 }
-
-
-}
 %>
 <table border=1 width=100% height=1>
 </table>
@@ -114,6 +111,7 @@ if(news.size()>105){
 		out.println(news.get(i).getCreator()+ " " + news.get(i).getDescription());
 		out.println("</td></tr>");
 	}
+}
 }
 %>
 </textarea><br>

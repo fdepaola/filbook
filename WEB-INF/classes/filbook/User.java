@@ -75,6 +75,7 @@ public class User {
 	*/
 	public void setName(String n) {
 		name = n;
+		save();
 	}
 	
 	/**
@@ -231,6 +232,7 @@ public class User {
 	*/
 	public void setPassword(String p) {
 		password = p;
+		save();
 	}
 		
 	/**
@@ -527,6 +529,7 @@ public class User {
 					line = br.readLine();
 				}
 			}
+			save();
 		} catch (Exception e) {e.printStackTrace();}
 	}	
 }
