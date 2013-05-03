@@ -307,9 +307,11 @@ public class User {
 	
 	public void addNote(Note n){
 		notesList.add(n);
+		save();
 	}
 	public void removeNote(int i){
 		notesList.remove(i);
+		save();
 	}	
 	public ArrayList<Note> getNotes(){
 		return notesList;
@@ -463,6 +465,16 @@ public class User {
 				pw.println("^^^");
 			}
 			pw.println("$$$");
+			for (Note n : notesList){
+				pw.println(n.getTitle);
+				pw.println(n.getText);
+				for (c : n.getComments()){
+					pw.println(c.getCreator());
+					pw.println(c.getText());
+				}
+				pw.println("^^^");
+			}
+			pw.println("!!!");
 			pw.close();
 		} catch (Exception e) {e.printStackTrace();}
 	}
@@ -534,6 +546,22 @@ public class User {
 					t = br.readLine();
 					Comment nc = new Comment(u, t);
 					nt.addComment(nc);
+					line = br.readLine();
+				}
+				line = br.readLine();
+			}
+			line = br.readLine();
+			while (!line.equals("!!!")) {
+				String title = line;
+				t = br.readLine();
+				Note nn = new Note(this, title, t);
+				notesList.add(nn);
+				line = br.readLine();
+				while (!line.equals("^^^")) {
+					u = UserRepository.instance().getUser(line);
+					t = br.readLine();
+					nc = new Comment(u, t);
+					nn.addComment(nc);
 					line = br.readLine();
 				}
 				line = br.readLine();
