@@ -28,6 +28,7 @@ public class Group{
 		setName(name);
 		setCreator(creator);
 		init();
+		save();
 	}
 
 	private void init(){
@@ -35,7 +36,6 @@ public class Group{
 		members = new ArrayList<User>();
 		wall = new Wall(this);
 		notesList = new ArrayList<TextPost>();
-		save();
 	}
 
 	/**
@@ -169,6 +169,7 @@ public class Group{
 					line = br.readLine();
 				}
 			}
+			save();
 		} catch (Exception e) {e.printStackTrace();}
 	}
 }

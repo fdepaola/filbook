@@ -32,7 +32,7 @@
 </select>
 <select name="byear">
 <%
-	for (int i=2013; i>1970; i--){
+	for (int i=2013; i>1969; i--){
 		out.println("<option value=\"" + i + "\"");
 		if (u.getBirthday().get(Calendar.YEAR) == i)
 			out.println(" selected");

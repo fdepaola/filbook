@@ -11,6 +11,9 @@
 	if (name == null)
 		response.sendRedirect("home.jsp");
 	else{
+		if (GroupRepository.instance().getGroup(name) != null)
+			response.sendRedirect("group.jsp?group=" + name);
+		else {
 		Group newGroup = GroupRepository.instance().createNewGroup(name, currentUser);
 		newGroup.setPurpose(desc);
 		currentUser.joinGroup(newGroup);
@@ -26,5 +29,5 @@
 
 		response.sendRedirect("group.jsp?group=" + newGroup.getName());
 	}
-
+	}
 %>

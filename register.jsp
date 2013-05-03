@@ -31,7 +31,7 @@ Date of Birth (M/D/Y):</td><td><select name="bmo">
 </select>
 <select name="byr">
 <%
-	for (int i=2013; i>1970; i--)
+	for (int i=2013; i>1969; i--)
 		out.println("<option value=\"" + i + "\">" + i + "</option>");
 %>
 </select>
