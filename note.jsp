@@ -4,10 +4,12 @@
 <%
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	User view;
-        if (request.getParameter("toView") == null){
+        if(session.getAttribute("wallOwner")==null){
+	//if (request.getParameter("toView") == null){
                 view = currentUser;
         }else{
-                view = UserRepository.instance().getUser(request.getParameter("toView"));
+                view=(User)session.getAttribute("wallOwner");
+		//view = UserRepository.instance().getUser(request.getParameter("toView"));
         }
         if (currentUser == null || view == null)
                 response.sendRedirect("home.jsp");
@@ -92,8 +94,11 @@
 <tr><td>
 <%
 	out.println("Note Title: " +noteTitle+": <br><br>");
+	ArrayList<Note> nnn = new ArrayList<Note>();
+	String ss = "ssss";
+	String tt = "tttt";
+	Note thisNote = new Note(view, ss, tt);
 	ArrayList<Note> notes = view.getNotes();
-	Note thisNote = notes.get(0);
 	for(int i=0; i<notes.size(); i++){
 
 		
@@ -109,7 +114,6 @@
 	}
 	session.setAttribute("thisNote", thisNote);
 	out.println("<form name=\""+noteInd+"\" action=\"commentNote.jsp?title=" + thisNote.getTitle()+ "\" method=\"get\"><textarea name=\"newComment\">");
-                //out.println("input type=\"hidden\" name=\"txt\" value=\"" + i + "\" />");
                 out.println("Comment on this post");
                 out.println("</textarea><br><input type=\"submit\" value=\"Comment\" /></form></td></tr>");
 	
@@ -127,7 +131,6 @@
 			}
 	%></td></tr><%
 
-//	out.println(view.getNotes().get(noteIndex).getTitle());
 %>
 </textarea><br>
 </form></td></tr>
