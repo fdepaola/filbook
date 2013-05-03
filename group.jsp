@@ -20,7 +20,7 @@
 <br>
 <%
 	if (!thisGroup.getMembers().contains(currentUser))
-		out.println("<form action=\"joinGroup.jsp?group=" + thisGroup.getName() + "\"><input type=submit value=\"Join the fun!\" /></form>");
+		out.println("<form action=\"joinGroup.jsp?group=" + thisGroup.getName() + "\" method=POST><input type=submit value=\"Join the fun!\" /></form>");
 %>
 <table><tr><td>
 <table border=1 width=20% height=100% style="float:left">
@@ -43,12 +43,13 @@ Notes: <br>
 </tr>
 <tr height=30%>
 <td>
-Friends: <br>
+Members: <br>
+
 <%
-        if(currentUser.getFriends().isEmpty())
-                out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
-        for (User f : currentUser.getFriends())
-                out.println("<a href=\"profile.jsp?toView=" + f.getEmail() + "\">" + f.getName() + "<br>");
+	if (thisGroup.getMembers().isEmpty())
+		out.println("<tr><td>No members in this group!</br>Why does it even exist?</td></tr>");
+	for (User m : thisGroup.getMembers())
+		out.println("<a href=\"profile.jsp?toView=" + m.getEmail() + "\">" + m.getName() + "</a><br>");
 %>
 </td>
 </tr>
@@ -65,13 +66,7 @@ Groups: </br>
 </td>
 </tr>
 </table>
-
-</td>
-<td valign="top" width="100%">
-
-
-
-<table border=1>
+<table border=1 width=80% style="float:right">
 <tr><td>
 <form name="addPost" action="groupPost.jsp" method="get">
 <textarea name="newWallPost" cols="70" rows="4">
@@ -120,17 +115,13 @@ for(int i=viewWall.size()-1; i>=0; i--){
 
 %>
 </table>
-</td><td valign="top">
-<table border=1 style="float:right">
-<tr><td>Members</td></tr>
+</td>
 <%
-	if (thisGroup.getMembers().isEmpty())
-		out.println("<tr><td>No members in this group!</br>Why does it even exist?</td></tr>");
-	for (User m : thisGroup.getMembers())
-		out.println("<tr><td><a href=\"profile.jsp?toView=" + m.getEmail() + "\">" + m.getName() + "</a></td></tr>");
+		if (thisGroup.getMembers().contains(currentUser)) {
+                        out.println("<form action =\"leaveGroup.jsp\" method=POST><input type=\"hidden\" name=\"removed\" value=\"" + thisGroup.getName() + "\" /><input type=submit value=\"Kill Membership\" /></form>");
+                }
+
 %>
-</table>
-</td></tr></table>
 		<%
 	}
 }
