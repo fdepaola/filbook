@@ -60,7 +60,7 @@ public class Group{
 	*/
 	public void setPurpose(String p){
 		purpose = p;
-		//save();
+		save();
 	}	
 
 	/**
@@ -125,9 +125,9 @@ public class Group{
 			p.println(this.creator.getEmail());
 			p.println(this.purpose);
 			//p.println("***");
-			//for (User u : members)
-			//	p.println(u.getEmail());
-			//p.println("---");
+			for (User u : members)
+				p.println(u.getEmail());
+			p.println("---");
 			for (TextPost t : this.getWall().getPosts()){
 				p.println(t.getCreator());	
 				//p.println(t.getDate().get(Calendar.MONTH));
@@ -157,6 +157,9 @@ public class Group{
 			creator = UserRepository.instance().getUser(br.readLine());
 			purpose = br.readLine();
 			String line = br.readLine();
+			while (!line.equals("---"))
+				members.add(UserRepository.instance().getUser(line));
+			line = br.readLine();
 			while (!line.equals("$$$")) {
 				User u = UserRepository.instance().getUser(line);
 				//int m = (new Integer(br.readLine())).intValue();

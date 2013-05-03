@@ -518,7 +518,7 @@ public class User {
 			while (!line.equals("@@@")) {
 				Group g = GroupRepository.instance().getGroup(line);
 				groupList.add(g);
-				g.addMember(this);
+				//g.addMember(this);
 				line = br.readLine();
 			}
 			line = br.readLine();
