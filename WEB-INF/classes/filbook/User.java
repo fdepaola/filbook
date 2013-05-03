@@ -42,9 +42,9 @@ public class User {
 	@param p the User's password
 	*/
 	User(String n, String e, String p){
-		setName(n);
-		setEmail(e);
-		setPassword(p);
+		name = n;
+		email = e;
+		password = p;
 		init();
 		save();
 	}
@@ -443,7 +443,7 @@ public class User {
 				pw.println(fr.email);
 			pw.println("---");
 			for (Group g : groupList)
-				pw.println(g.getName());
+//				pw.println(g.getName());
 			pw.println("@@@");
 			for (String n : notifications)
 				pw.println(n);
@@ -512,10 +512,10 @@ public class User {
 			}
 			line = br.readLine();
 			while (!line.equals("@@@")) {
-				Group g = GroupRepository.instance().getGroup(line);
-				groupList.add(g);
+//				Group g = GroupRepository.instance().getGroup(line);
+//				groupList.add(g);
 				//g.addMember(this);
-				line = br.readLine();
+//				line = br.readLine();
 			}
 			line = br.readLine();
 			while (!line.equals("###")) {

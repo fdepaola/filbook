@@ -5,6 +5,7 @@
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	if (currentUser == null)
 		response.sendRedirect("login.jsp");
+	else{
 	Group thisGroup;
 	if (request.getParameter("group") == null){
 		response.sendRedirect("home.jsp");
@@ -132,4 +133,5 @@ for(int i=viewWall.size()-1; i>=0; i--){
 </td></tr></table>
 		<%
 	}
+}
 %>
