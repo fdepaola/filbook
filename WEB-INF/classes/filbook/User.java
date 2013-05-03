@@ -443,7 +443,7 @@ public class User {
 				pw.println(fr.email);
 			pw.println("---");
 			for (Group g : groupList)
-//				pw.println(g.getName());
+				pw.println(g.getName());
 			pw.println("@@@");
 			for (String n : notifications)
 				pw.println(n);
@@ -457,10 +457,12 @@ public class User {
 				//pw.println(t.getDate().get(Calendar.DAY_OF_MONTH));
 				//pw.println(t.getDate().get(Calendar.YEAR));
 				pw.println(t.getText());
+				pw.println("___");
 				for (Comment c : t.getComments()){
 					pw.println(c.getCreator());
 					//pw.println(c.getDate());
 					pw.println(c.getText());
+					pw.println("___");
 				}
 				pw.println("^^^");
 			}
@@ -468,9 +470,11 @@ public class User {
 			for (Note n : notesList){
 				pw.println(n.getTitle());
 				pw.println(n.getText());
+				pw.println("___");
 				for (Comment c : n.getComments()){
 					pw.println(c.getCreator());
 					pw.println(c.getText());
+					pw.println("___");
 				}
 				pw.println("^^^");
 			}
@@ -512,10 +516,10 @@ public class User {
 			}
 			line = br.readLine();
 			while (!line.equals("@@@")) {
-//				Group g = GroupRepository.instance().getGroup(line);
-//				groupList.add(g);
-				//g.addMember(this);
-//				line = br.readLine();
+				Group g = GroupRepository.instance().getGroup(line);
+				groupList.add(g);
+				g.addMember(this);
+				line = br.readLine();
 			}
 			line = br.readLine();
 			while (!line.equals("###")) {
@@ -535,6 +539,12 @@ public class User {
 				//int d = (new Integer(br.readLine())).intValue();
 				//int y = (new Integer(br.readLine())).intValue();
 				String t = br.readLine();
+				line = br.readLine();
+				while (!line.equals("___")) {
+					t += "\n";
+					t += line;
+					line = br.readLine();
+				}
 				TextPost nt = new TextPost(u, t, wall);
 				wall.addWallPost(nt);
 				line = br.readLine();
@@ -544,6 +554,12 @@ public class User {
 					//d = (new Integer(br.readLine())).intValue();
 					//y = (new Integer(br.readLine())).intValue();
 					t = br.readLine();
+					line = br.readLine();
+					while (!line.equals("___")) {
+						t += "\n";
+						t += line;
+						line = br.readLine();
+					}
 					Comment nc = new Comment(u, t);
 					nt.addComment(nc);
 					line = br.readLine();
@@ -554,12 +570,24 @@ public class User {
 			while (!line.equals("!!!")) {
 				String title = line;
 				String tx = br.readLine();
+				line = br.readLine();
+				while (!line.equals("___")) {
+					tx += "\n";
+					tx += line;
+					line = br.readLine();
+				}
 				Note nn = new Note(this, title, tx);
 				notesList.add(nn);
 				line = br.readLine();
 				while (!line.equals("^^^")) {
 					User u = UserRepository.instance().getUser(line);
 					String t = br.readLine();
+					line = br.readLine();
+					while (!line.equals("___")) {
+						t += "\n";
+						t += line;
+						line = br.readLine();
+					}
 					Comment nc = new Comment(u, t);
 					nn.addComment(nc);
 					line = br.readLine();

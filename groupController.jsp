@@ -18,6 +18,7 @@
 				Group newGroup = GroupRepository.instance().createNewGroup(name, currentUser);
 				newGroup.setPurpose(desc);
 				currentUser.joinGroup(newGroup);
+				currentUser.save();
 				newGroup.addMember(currentUser);
 			
 				String descr = "created a new group " + newGroup.getName();

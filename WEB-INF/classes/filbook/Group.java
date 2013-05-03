@@ -134,10 +134,12 @@ public class Group{
 				//p.println(t.getDate().get(Calendar.DAY_OF_MONTH));
 				//p.println(t.getDate().get(Calendar.YEAR));
 				p.println(t.getText());
+				p.println("___");
 				for (Comment c : t.getComments()){
 					p.println(c.getCreator());
 					//p.println(c.getDate());
 					p.println(c.getText());
+					p.println("___");
 				}
 				p.println("^^^");
 			}	
@@ -161,6 +163,12 @@ public class Group{
 				//int d = (new Integer(br.readLine())).intValue();
 				//int y = (new Integer(br.readLine())).intValue();
 				String t = br.readLine();
+				line = br.readLine();
+				while (!line.equals("___")) {
+					t += "\n";
+					t += line;
+					line = br.readLine();
+				}
 				TextPost nt = new TextPost(u, t, wall);
 				wall.addWallPost(nt);
 				line = br.readLine();
@@ -170,6 +178,12 @@ public class Group{
 					//d = (new Integer(br.readLine())).intValue();
 					//y = (new Integer(br.readLine())).intValue();
 					t = br.readLine();
+					line = br.readLine();
+					while (!line.equals("___")) {
+						t += "\n";
+						t += line;
+						line = br.readLine();
+					}
 					Comment nc = new Comment(u, t);
 					nt.addComment(nc);
 					line = br.readLine();
