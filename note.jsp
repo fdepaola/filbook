@@ -5,11 +5,11 @@
 	User currentUser = ((User) session.getAttribute("userAccount"));
 	User view;
         if(session.getAttribute("wallOwner")==null){
-	//if (request.getParameter("toView") == null){
+//	if (request.getParameter("toView") == null){
                 view = currentUser;
         }else{
                 view=(User)session.getAttribute("wallOwner");
-		//view = UserRepository.instance().getUser(request.getParameter("toView"));
+//		view = UserRepository.instance().getUser(request.getParameter("toView"));
         }
         if (currentUser == null || view == null)
                 response.sendRedirect("home.jsp");
@@ -100,7 +100,7 @@
 	Note thisNote = new Note(view, ss, tt);
 	ArrayList<Note> notes = view.getNotes();
 	for(int i=0; i<notes.size(); i++){
-
+		//out.println(notes.get(i).getTitle());
 		
 		if(noteTitle.equals(notes.get(i).getTitle())){
 			
