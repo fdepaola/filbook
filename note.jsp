@@ -91,14 +91,19 @@
 <table border=1 width=80% height=100% style="float:right">
 <tr><td>
 <%
-	out.println(noteTitle+"<br><br>");
+	out.println("Note Title: " +noteTitle+": <br><br>");
 	ArrayList<Note> notes = view.getNotes();
 	Note thisNote = notes.get(0);
 	for(int i=0; i<notes.size(); i++){
-		if(noteTitle.equals(notes.get(i).getTitle())){
+
 			out.println(notes.get(i).getText());
 			out.println("<br><br><br>");
 			thisNote = notes.get(i);
+		
+		if(noteTitle.equals(notes.get(i).getTitle())){
+			if(currentUser.equals(view)){
+                        out.println("<form action=\"removeNote.jsp\" method=POST><input type=\"hidden\" name=\"pRemove\" value=\"" +i+"\" /><input type=\"submit\" value=\"Delete Note\" /></form>");
+                	}
 		}
 	}
 	session.setAttribute("thisNote", thisNote);
@@ -111,7 +116,11 @@
 			if(c.size()>0){
 				for(int x=0; x<c.size(); x++){
 					out.println("<tr><td>");
-					out.println(c.get(x).getCreator() + " wrote <br>" + c.get(x).getText()+"<br>");
+					out.println(UserRepository.instance().getUser(c.get(x).getCreator()).getName() + " wrote <br>" + c.get(x).getText()+"<br>");
+					if(currentUser.equals(view) || currentUser.equals(UserRepository.instance().getUser(view.getNotes().get(noteInd).getComments().get(x).getCreator()))){
+                                out.println("<form action=\"removeCommentNote.jsp\" method=POST><input type=\"hidden\" name=\"cRemove\" value=\"" +x+"\" /><input type=\"hidden\" name=\"pRemove\" value=\""+noteInd+"\" /><input type=\"submit\" value=\"x\" /></form>");
+                        }
+
 					out.println("</td></tr>");
 				}
 			}

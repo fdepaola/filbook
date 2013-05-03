@@ -40,8 +40,8 @@ public class Wall{
 		Removes a TextPost from the Wall's Arraylist of Actions based on 
 		index.
 	*/
-	public void removeWallPost(TextPost t){
-
+	public void removeWallPost(int index){
+		wallPosts.remove(index);	
 	}
 	/**
 		Iterrates through the Wall's ArrayList of Actions and calls

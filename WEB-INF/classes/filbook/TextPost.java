@@ -57,8 +57,8 @@ public class TextPost extends Action{
 		The Comment will be removed based on matching the Comment's index 
 		lcoation.
 	*/
-	public void removeComment(Comment c){
-
+	public void removeComment(int index){
+		comments.remove(index);	
 	}
 	/**
 		Prints out the TextPost's creator, dateOfPost, and text, as well as

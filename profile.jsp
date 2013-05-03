@@ -111,24 +111,26 @@ Write on <%out.print(view.getName());%>'s wall!
 	for(int i=viewWall.size()-1; i>=0; i--){
 		
 		out.println("<tr><td>");
-		out.println(viewWall.get(i).getCreator()+ " posted: ");%><br><%
+		out.println(UserRepository.instance().getUser((viewWall.get(i).getCreator())).getName() + " posted: ");%><br><%
+
 		out.println(viewWall.get(i).getText());
-		
+		if(currentUser.equals(view) || currentUser.equals(UserRepository.instance().getUser(viewWall.get(i).getCreator()))){
+			out.println("<form action=\"removePostProfile.jsp\" method=POST><input type=\"hidden\" name=\"pRemove\" value=\"" +i+"\" /><input type=\"submit\" value=\"x\" /></form>");
+		}
 		ArrayList<Comment> c = viewWall.get(i).getComments();
 		for (int n=0; n<c.size(); n++){
 			out.println("<br><br>");
-			out.println(viewWall.get(i).getComments().get(n).getCreator()+ " commented: ");
+			out.println(UserRepository.instance().getUser((viewWall.get(i).getComments().get(n).getCreator())).getName()+ " commented: ");
 			out.println("<br>");
 			out.println(viewWall.get(i).getComments().get(n).getText());
+			if(currentUser.equals(view) || currentUser.equals(UserRepository.instance().getUser(viewWall.get(i).getComments().get(n).getCreator()))){
+				out.println("<form action=\"removeCommentProfile.jsp\" method=POST><input type=\"hidden\" name=\"cRemove\" value=\"" +n+"\" /><input type=\"hidden\" name=\"pRemove\" value=\""+i+"\" /><input type=\"submit\" value=\"x\" /></form>");
+			}
 		}
 		out.println("<br><br>");
 		out.println("This post has " + c.size() + " comments.");
 			
-		//TextPost txt = ((TextPost) session.setAttribute(viewWall.get(i)));
-		//TextPost t = viewWall.get(i);
-		//session.setAttribute("txt", t);
 		out.println("<form name=\""+i+"\" action=\"comment.jsp\" method=\"get\"><input type=\"hidden\" name=\"txt\" value=\""+i+"\" /><textarea name=\"newComment\">");
-		//out.println("input type=\"hidden\" name=\"txt\" value=\"" + i + "\" />");
 		out.println("Comment on this post");
 		out.println("</textarea><br><input type=\"submit\" value=\"Comment\" /></form></td></tr>");
 	}
