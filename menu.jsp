@@ -21,10 +21,8 @@ Search for other Filberts or Filbert-groups!</br>
 	if (currentUser != null){
 	%>
 <a href="home.jsp">Home</a> |
-//<a href="inbox.jsp">Inbox</a> | 
 <a href="profile.jsp">My Profile</a> | 
 <a href="modProfile.jsp">Modify Profile</a> |
-//<a href="modAccount.jsp">Account Settings</a> |
 <a href="logout.jsp">Logout</a>
 	<%
 	} else {
