@@ -95,14 +95,18 @@
 	</table>
 	<table border=1 width=80% height=100% style="float:right">
 	<tr><td>
-	<form name="addPost" action="wallPost.jsp" method="get">
-	<textarea name="newWallPost" cols="70" rows="4">
-Write on <%out.print(view.getName());%>'s wall!
+<% if(currentUser.equals(view) || currentUser.isFriends(view)){
+	out.println("<form name=\"addPost\" action=\"wallPost.jsp\" method=\"get\">");
+	out.println("<textarea name=\"newWallPost\" cols=\"70\" rows=\"4\">");
+	out.println("Write on " + view.getName() + "'s wall!");
+	out.println("</textarea><br>");
+	out.println("<input type=\"submit\" value=\"Add Wall Post\" />");
+	out.println("</form></td></tr>");
+}else{
+out.println("You aren't friends with "+view.getName()+" yet.");
+}
 
-	</textarea><br>
-	<input type="submit" value="Add Wall Post" />
-	</form></td></tr>
-	<%
+	
 	ArrayList<TextPost> viewWall = view.getWall().getPosts();
 
 	if(viewWall.size()==0){
@@ -129,10 +133,11 @@ Write on <%out.print(view.getName());%>'s wall!
 		}
 		out.println("<br><br>");
 		out.println("This post has " + c.size() + " comments.");
-			
+		if(currentUser.equals(view) || currentUser.isFriends(view)){	
 		out.println("<form name=\""+i+"\" action=\"comment.jsp\" method=\"get\"><input type=\"hidden\" name=\"txt\" value=\""+i+"\" /><textarea name=\"newComment\">");
 		out.println("Comment on this post");
 		out.println("</textarea><br><input type=\"submit\" value=\"Comment\" /></form></td></tr>");
+		}
 	}
 		out.println("</td></tr>");
 	%>

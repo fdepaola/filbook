@@ -96,11 +96,12 @@
 	Note thisNote = notes.get(0);
 	for(int i=0; i<notes.size(); i++){
 
+		
+		if(noteTitle.equals(notes.get(i).getTitle())){
+			
 			out.println(notes.get(i).getText());
 			out.println("<br><br><br>");
 			thisNote = notes.get(i);
-		
-		if(noteTitle.equals(notes.get(i).getTitle())){
 			if(currentUser.equals(view)){
                         out.println("<form action=\"removeNote.jsp\" method=POST><input type=\"hidden\" name=\"pRemove\" value=\"" +i+"\" /><input type=\"submit\" value=\"Delete Note\" /></form>");
                 	}
