@@ -17,6 +17,7 @@ public class Wall{
 	*/
 	public Wall(User u){
 		owner = u;
+		creator = null;
 		wallPosts = new ArrayList<TextPost>();
 	}
 
@@ -26,6 +27,7 @@ public class Wall{
 	*/
 	public Wall(Group g){
 		creator = g;
+		owner = null;
 		wallPosts = new ArrayList<TextPost>();
 	}
 
@@ -35,6 +37,7 @@ public class Wall{
 	*/
 	public void addWallPost(TextPost t){
 		wallPosts.add(t);
+		save();
 	}
 	/**
 		Removes a TextPost from the Wall's Arraylist of Actions based on 
@@ -67,4 +70,12 @@ public class Wall{
 	public ArrayList<TextPost> getPosts(){
 		return wallPosts;
 	}
+	
+	void save(){
+		if (owner != null)
+			owner.save();
+		if (creator != null)
+			creator.save();
+	}		
 }
+

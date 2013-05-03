@@ -50,14 +50,14 @@ public class User {
 	}
 
 	private void init(){
-		setBirthday(0,0,0);
-		setGender("Unspecified");
-		setJob("");
-		setSchool("");
-		setRelationship("");
-		setPartner("");
-		setPhone("");	
-		setPrivate(false);
+		setBirthdayNS(0,0,0);
+		gender = "Unspecified";
+		job = "";
+		school = "";
+		relationship = "";
+		partner = "";
+		phone = "";	
+		isPrivate = false;
 		newsfeed = new ArrayList<NewsFeedItem>();
 		friendList = new ArrayList<User>();
 		groupList = new ArrayList<Group>();
@@ -66,7 +66,7 @@ public class User {
 		notifications = new ArrayList<String>();
 		friendRequests = new ArrayList<FriendRequest>();
 		wall = new Wall(this);
-		setPicture("profilePics/filbert.jpg");
+		profilePic = "profilePics/filbert.jpg";
 	}	
 
 	/**
@@ -93,6 +93,11 @@ public class User {
 	@param year the integer that specifies the User's birth year
 	*/
 	public void setBirthday(int month, int date, int year) {
+		birthday = new GregorianCalendar(year, month, date);
+		save();
+	}
+
+	public void setBirthdayNS(int month, int date, int year) {
 		birthday = new GregorianCalendar(year, month, date);
 	}
 	
@@ -413,7 +418,7 @@ public class User {
 		save();
 	}
 
-	private void save(){
+	public void save(){
 		try {
 			File f = new File("/home/fdepa7na/tomcat/webapps/filbook/users/" + email.replaceAll("[\\W]", "") + ".user");
 			PrintWriter pw = new PrintWriter(new FileWriter(f));
@@ -454,10 +459,10 @@ public class User {
 					pw.println(c.getCreator());
 					//pw.println(c.getDate());
 					pw.println(c.getText());
-					pw.println("***");
 				}
 				pw.println("^^^");
 			}
+			pw.println("$$$");
 			pw.close();
 		} catch (Exception e) {e.printStackTrace();}
 	}
@@ -472,7 +477,7 @@ public class User {
 			int mo = (new Integer(br.readLine())).intValue();
 			int da = (new Integer(br.readLine())).intValue();
 			int yr = (new Integer(br.readLine())).intValue();
-			setBirthday(mo, da, yr);
+			setBirthdayNS(mo, da, yr);
 			gender = br.readLine();
 			job = br.readLine();
 			school = br.readLine();
@@ -489,14 +494,15 @@ public class User {
 			String line = br.readLine();
 			while (!line.equals("---")) {
 				User af = UserRepository.instance().getUser(line);
-				this.addFriend(af);
+				if(!friendList.contains(af))
+					friendList.add(af);
 				line = br.readLine();
 			}
 			line = br.readLine();
 			while (!line.equals("@@@")) {
 				Group g = GroupRepository.instance().getGroup(line);
-				this.joinGroup(g);
-				g.addMember(this);
+				groupList.add(g);
+				//g.addMember(this);
 				line = br.readLine();
 			}
 			line = br.readLine();
@@ -507,18 +513,20 @@ public class User {
 			line = br.readLine();
 			while (!line.equals("---")) {
 				User sfr = UserRepository.instance().getUser(line);
-				sfr.sendFriendRequest(this);
+				friendRequests.add(new FriendRequest(sfr, this));
 				line = br.readLine();
 			}
 			line = br.readLine();
-			while (!line.equals("^^^")) {
+			while (!line.equals("$$$")) {
 				User u = UserRepository.instance().getUser(line);
 				//int m = (new Integer(br.readLine())).intValue();
 				//int d = (new Integer(br.readLine())).intValue();
 				//int y = (new Integer(br.readLine())).intValue();
 				String t = br.readLine();
-				TextPost nt = new TextPost(u, t);
-				while (!line.equals("***")) {
+				TextPost nt = new TextPost(u, t, wall);
+				wall.addWallPost(nt);
+				line = br.readLine();
+				while (!line.equals("^^^")) {
 					u = UserRepository.instance().getUser(line);
 					//m = (new Integer(br.readLine())).intValue();
 					//d = (new Integer(br.readLine())).intValue();
@@ -528,8 +536,8 @@ public class User {
 					nt.addComment(nc);
 					line = br.readLine();
 				}
+				line = br.readLine();
 			}
-			save();
 		} catch (Exception e) {e.printStackTrace();}
 	}	
 }

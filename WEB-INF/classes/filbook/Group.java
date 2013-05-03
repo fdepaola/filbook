@@ -25,14 +25,14 @@ public class Group{
 	@param creator the User who started the Group
 	*/
 	Group(String name, User creator){
-		setName(name);
-		setCreator(creator);
+		name = name;
+		creator = creator;
 		init();
 		save();
 	}
 
 	private void init(){
-		setPurpose("");
+		purpose = "";
 		members = new ArrayList<User>();
 		wall = new Wall(this);
 		notesList = new ArrayList<TextPost>();
@@ -105,6 +105,10 @@ public class Group{
 		save();
 	}
 
+	public ArrayList<User> getMembers(){
+		return members;
+	}
+
 	/**
 	Returns the Group's Wall object.
 	@return the Wall object instantiated by the Group
@@ -120,10 +124,10 @@ public class Group{
 			p.println(this.name);
 			p.println(this.creator.getEmail());
 			p.println(this.purpose);
-			p.println("***");
-			for (User u : members)
-				p.println(u.getEmail());
-			p.println("---");
+			//p.println("***");
+			//for (User u : members)
+			//	p.println(u.getEmail());
+			//p.println("---");
 			for (TextPost t : this.getWall().getPosts()){
 				p.println(t.getCreator());	
 				//p.println(t.getDate().get(Calendar.MONTH));
@@ -134,10 +138,10 @@ public class Group{
 					p.println(c.getCreator());
 					//p.println(c.getDate());
 					p.println(c.getText());
-					p.println("***");
 				}
 				p.println("^^^");
 			}	
+			p.println("$$$");
 			p.close();
 		} catch (Exception e) {e.printStackTrace();}
 	}
@@ -151,15 +155,17 @@ public class Group{
 			creator = UserRepository.instance().getUser(br.readLine());
 			purpose = br.readLine();
 			String line = br.readLine();
-			while (!line.equals("^^^")) {
+			while (!line.equals("$$$")) {
 				User u = UserRepository.instance().getUser(line);
 				//int m = (new Integer(br.readLine())).intValue();
 				//int d = (new Integer(br.readLine())).intValue();
 				//int y = (new Integer(br.readLine())).intValue();
 				String t = br.readLine();
-				TextPost nt = new TextPost(u, t);
-				while (!line.equals("***")) {
-					u = UserRepository.instance().getUser(line);
+				TextPost nt = new TextPost(u, t, wall);
+				wall.addWallPost(nt);
+				line = br.readLine();
+				while (!line.equals("^^^")) {
+					u = UserRepository.instance().getUser(br.readLine());
 					//m = (new Integer(br.readLine())).intValue();
 					//d = (new Integer(br.readLine())).intValue();
 					//y = (new Integer(br.readLine())).intValue();
@@ -168,8 +174,8 @@ public class Group{
 					nt.addComment(nc);
 					line = br.readLine();
 				}
+				line = br.readLine();
 			}
-			save();
 		} catch (Exception e) {e.printStackTrace();}
 	}
 }

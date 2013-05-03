@@ -14,7 +14,7 @@ public abstract class Action{
 
 	protected String creator;
 	protected GregorianCalendar dateOfPost;
-	protected  ArrayList<Comment> comments;
+	protected ArrayList<Comment> comments;
 	
 	/**
 		Sets the Action's creator member variable.

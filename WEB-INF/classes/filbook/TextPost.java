@@ -14,28 +14,33 @@ import java.util.*;
 public class TextPost extends Action{
 	
 	protected String text;
+	private Wall owner;
+
 	/**
 		Constructs a new TextPost.
 	*/	
-	public TextPost(User u, String s){
+	public TextPost(User u, String s, Wall w){
  		creator = u.getEmail();
 		text = s;
+		owner = w;
 		comments = new ArrayList<Comment>();
 	}
 	/**
 		Sets the TextPost's text member variable.
 		@param s the text destined to be displayed
 	*/
+	public void setText(String t){
+		text = t;
+	}
 
+	/*
 	TextPost(String e, int m, int d, int y, String t){
 		creator = e;
 		text = t;
 		//dateOfPost = new GregorianCalendar(y, m, d);
 	}		
-	
-	public void setText(String t){
-		text = t;
-	}
+	*/	
+
 	/**
 		Returns the TextPost's text as a String.
 		@return the text to be displayed
@@ -51,6 +56,7 @@ public class TextPost extends Action{
 	*/
 	public void addComment(Comment c){
 		comments.add(c);
+		owner.save();
 	}
 	/**
 		Removes a Comment from the TextPost's ArrayList of Comments.

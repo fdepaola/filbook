@@ -21,6 +21,7 @@ public class UserRepository{
 			theInstance.bootstrap();
 			GroupRepository.instance();
 			theInstance.bootstrap2();
+			GroupRepository.instance().bootstrap2();
 		}
 		return theInstance;
 	}

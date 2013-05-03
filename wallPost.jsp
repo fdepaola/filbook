@@ -19,7 +19,8 @@ for(int i=0; i<f.size(); i++){
 	f.get(i).addNewsFeedItem(n);
 }
 
-TextPost t = new TextPost(currentUser, s);
+TextPost t = new TextPost(currentUser, s, view.getWall());
 view.getWall().addWallPost(t);
+view.save();
 response.sendRedirect("profile.jsp?toView=" + view.getEmail());
 %>

@@ -14,11 +14,14 @@
 		%>
 		<h1>Welcome to <%=thisGroup.getName() %></h1>
 		<% out.println(thisGroup.getPurpose()); %><br><br>
-
 <table border=1 width=100% height=1>
 </table>
 <br>
-
+<%
+	if (!thisGroup.getMembers().contains(currentUser))
+		out.println("<form action=\"joinGroup.jsp?group=" + thisGroup.getName() + "\"><input type=submit value=\"Join the fun!\" /></form>");
+%>
+<table><tr><td>
 <table border=1 width=20% height=100% style="float:left">
 <tr height=10%>
 <td>
@@ -62,8 +65,8 @@ Groups: </br>
 </tr>
 </table>
 
-
-
+</td>
+<td valign="top" width="100%">
 
 
 
@@ -116,6 +119,17 @@ for(int i=viewWall.size()-1; i>=0; i--){
 
 %>
 </table>
+</td><td valign="top">
+<table border=1 style="float:right">
+<tr><td>Members</td></tr>
+<%
+	if (thisGroup.getMembers().isEmpty())
+		out.println("<tr><td>No members in this group!</br>Why does it even exist?</td></tr>");
+	for (User m : thisGroup.getMembers())
+		out.println("<tr><td><a href=\"profile.jsp?toView=" + m.getEmail() + "\">" + m.getName() + "</a></td></tr>");
+%>
+</table>
+</td></tr></table>
 		<%
 	}
 %>

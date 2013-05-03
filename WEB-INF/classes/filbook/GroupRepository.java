@@ -63,7 +63,7 @@ public class GroupRepository{
 	/**
 	Restores the system back to its most recently saved state. Repopulates all objects in memory and their associations with each other. This method is only called when the single instance of the GroupRepository is instantiated. 
 	*/
-	void bootstrap(){
+	private void bootstrap(){
 		GroupList gl = new GroupList();
 		File currentDir = new File("/home/fdepa7na/tomcat/webapps/filbook/groups/");
 		String[] groupFileNames = currentDir.list(gl);
@@ -71,7 +71,10 @@ public class GroupRepository{
 			Group ng = new Group();
 			ng.setName(groupFileNames[i].substring(0, groupFileNames[i].length()-6));
 			groupTable.put(groupFileNames[i].substring(0, groupFileNames[i].length()-6), ng);
-		}		
+		}
+	}		
+
+	void bootstrap2(){
 		for (Group g : instance().getAllGroups()) {
 			g.load("/home/fdepa7na/tomcat/webapps/filbook/groups/" + g.getName() + ".group");
 		} 
