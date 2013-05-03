@@ -68,10 +68,10 @@
 <td>
 <%out.println(view.getName()+"'s Friends: ");%><br>
 <%
-	if(view.getFriends().isEmpty())
-		out.println(view.getName()+" has no friends :(");
-	for (User f : view.getFriends())
-		out.println(f.getName()+"<br>");
+        if(currentUser.getFriends().isEmpty())
+                out.println("You have no friends :( Try our nifty search function to find like-minded Filberts!");
+        for (User f : currentUser.getFriends())
+                out.println("<a href=\"profile.jsp?toView=" + f.getEmail() + "\">" + f.getName() + "<br>");
 %>
 </td>
 </tr>
@@ -96,11 +96,12 @@
 	Note thisNote = notes.get(0);
 	for(int i=0; i<notes.size(); i++){
 
+		
+		if(noteTitle.equals(notes.get(i).getTitle())){
+			
 			out.println(notes.get(i).getText());
 			out.println("<br><br><br>");
 			thisNote = notes.get(i);
-		
-		if(noteTitle.equals(notes.get(i).getTitle())){
 			if(currentUser.equals(view)){
                         out.println("<form action=\"removeNote.jsp\" method=POST><input type=\"hidden\" name=\"pRemove\" value=\"" +i+"\" /><input type=\"submit\" value=\"Delete Note\" /></form>");
                 	}
