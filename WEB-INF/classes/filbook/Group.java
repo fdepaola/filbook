@@ -157,8 +157,10 @@ public class Group{
 			creator = UserRepository.instance().getUser(br.readLine());
 			purpose = br.readLine();
 			String line = br.readLine();
-			while (!line.equals("---"))
+			while (!line.equals("---")) {
 				members.add(UserRepository.instance().getUser(line));
+				line = br.readLine();
+			}
 			line = br.readLine();
 			while (!line.equals("$$$")) {
 				User u = UserRepository.instance().getUser(line);
