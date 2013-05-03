@@ -466,9 +466,9 @@ public class User {
 			}
 			pw.println("$$$");
 			for (Note n : notesList){
-				pw.println(n.getTitle);
-				pw.println(n.getText);
-				for (c : n.getComments()){
+				pw.println(n.getTitle());
+				pw.println(n.getText());
+				for (Comment c : n.getComments()){
 					pw.println(c.getCreator());
 					pw.println(c.getText());
 				}
@@ -553,14 +553,14 @@ public class User {
 			line = br.readLine();
 			while (!line.equals("!!!")) {
 				String title = line;
-				t = br.readLine();
-				Note nn = new Note(this, title, t);
+				String tx = br.readLine();
+				Note nn = new Note(this, title, tx);
 				notesList.add(nn);
 				line = br.readLine();
 				while (!line.equals("^^^")) {
-					u = UserRepository.instance().getUser(line);
-					t = br.readLine();
-					nc = new Comment(u, t);
+					User u = UserRepository.instance().getUser(line);
+					String t = br.readLine();
+					Comment nc = new Comment(u, t);
 					nn.addComment(nc);
 					line = br.readLine();
 				}
